@@ -1,0 +1,44 @@
+'use client';
+
+import { motion, AnimatePresence } from 'framer-motion';
+import AboutSection from './sections/AboutSection';
+import ExperienceSection from './sections/ExperienceSection';
+import SkillsSection from './sections/SkillsSection';
+import CertificatesSection from './sections/CertificatesSection';
+import HobbiesSection from './sections/HobbiesSection';
+import ProjectsSection from './sections/ProjectsSection';
+import CodeSnippetsSection from './sections/CodeSnippetsSection';
+import ContactSection from './sections/ContactSection';
+
+interface MainContentProps {
+  activeSection: string;
+}
+
+const sections: { [key: string]: React.ReactElement } = {
+  about: <AboutSection />,
+  experience: <ExperienceSection />,
+  skills: <SkillsSection />,
+  certificates: <CertificatesSection />,
+  hobbies: <HobbiesSection />,
+  projects: <ProjectsSection />,
+  'code-snippets': <CodeSnippetsSection />,
+  contact: <ContactSection />,
+};
+
+export default function MainContent({ activeSection }: MainContentProps) {
+  return (
+    <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 min-h-[600px]">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeSection}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+        >
+          {sections[activeSection] || <AboutSection />}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
