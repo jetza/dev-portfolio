@@ -7,71 +7,17 @@ import {
   ChevronDown, 
   Folder, 
   FolderOpen, 
-  FileText, 
-  User, 
-  Briefcase, 
-  Code2, 
-  Mail 
+  FileText
 } from 'lucide-react';
+import { folders } from '@/data/sidebar';
 
 interface SidebarProps {
   activeSection: string;
   setActiveSection: (section: string) => void;
 }
 
-interface FolderItem {
-  id: string;
-  name: string;
-  icon: React.ComponentType<{ className?: string }>;
-  children?: SubItem[];
-}
-
-interface SubItem {
-  id: string;
-  name: string;
-}
-
 export default function Sidebar({ activeSection, setActiveSection }: SidebarProps) {
   const [openFolders, setOpenFolders] = useState<string[]>(['professional', 'personal']);
-
-  const folders: FolderItem[] = [
-    {
-      id: 'professional',
-      name: 'Professional Info',
-      icon: Briefcase,
-      children: [
-        { id: 'experience', name: 'Experience' },
-        { id: 'skills', name: 'Skills' },
-        { id: 'certificates', name: 'Certificates' },
-      ],
-    },
-    {
-      id: 'personal',
-      name: 'Personal Info',
-      icon: User,
-      children: [
-        { id: 'about', name: 'About Me' },
-        { id: 'hobbies', name: 'Hobbies' },
-      ],
-    },
-    {
-      id: 'projects',
-      name: 'Projects',
-      icon: Code2,
-      children: [
-        { id: 'projects', name: 'All Projects' },
-        { id: 'code-snippets', name: 'Code Snippets' },
-      ],
-    },
-    {
-      id: 'contact',
-      name: 'Contact',
-      icon: Mail,
-      children: [
-        { id: 'contact', name: 'Get in Touch' },
-      ],
-    },
-  ];
 
   const toggleFolder = (folderId: string) => {
     setOpenFolders(prev =>
@@ -119,18 +65,63 @@ export default function Sidebar({ activeSection, setActiveSection }: SidebarProp
                 className="ml-6 mt-1 space-y-1"
               >
                 {folder.children.map((child) => (
-                  <button
-                    key={child.id}
-                    onClick={() => setActiveSection(child.id)}
-                    className={`flex items-center w-full px-2 py-1.5 text-sm rounded transition-all duration-200 ${
-                      activeSection === child.id
-                        ? 'bg-purple-600/30 text-purple-300 border-l-2 border-purple-400'
-                        : 'text-gray-400 hover:text-gray-200 hover:bg-gray-700/30'
-                    }`}
-                  >
-                    <FileText className="w-3 h-3 mr-2" />
-                    <span>{child.name}</span>
-                  </button>
+                  <div key={child.id}>
+                    {child.children ? (
+                      <>
+                        <button
+                          onClick={() => toggleFolder(child.id)}
+                          className="flex items-center w-full px-2 py-1.5 text-sm text-gray-300 hover:bg-gray-700/50 rounded transition-colors duration-200"
+                        >
+                          {openFolders.includes(child.id) ? (
+                            <ChevronDown className="w-3 h-3 mr-1" />
+                          ) : (
+                            <ChevronRight className="w-3 h-3 mr-1" />
+                          )}
+                          {openFolders.includes(child.id) ? (
+                            <FolderOpen className="w-3 h-3 mr-2 text-purple-400" />
+                          ) : (
+                            <Folder className="w-3 h-3 mr-2 text-purple-400" />
+                          )}
+                          <span>{child.name}</span>
+                        </button>
+                        {openFolders.includes(child.id) && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="ml-6 mt-1 space-y-1"
+                          >
+                            {child.children.map((subChild) => (
+                              <button
+                                key={subChild.id}
+                                onClick={() => setActiveSection(subChild.id)}
+                                className={`flex items-center w-full px-2 py-1.5 text-sm rounded transition-all duration-200 ${
+                                  activeSection === subChild.id
+                                    ? 'bg-purple-600/30 text-purple-300 border-l-2 border-purple-400'
+                                    : 'text-gray-400 hover:text-gray-200 hover:bg-gray-700/30'
+                                }`}
+                              >
+                                <FileText className="w-3 h-3 mr-2" />
+                                <span>{subChild.name}</span>
+                              </button>
+                            ))}
+                          </motion.div>
+                        )}
+                      </>
+                    ) : (
+                      <button
+                        onClick={() => setActiveSection(child.id)}
+                        className={`flex items-center w-full px-2 py-1.5 text-sm rounded transition-all duration-200 ${
+                          activeSection === child.id
+                            ? 'bg-purple-600/30 text-purple-300 border-l-2 border-purple-400'
+                            : 'text-gray-400 hover:text-gray-200 hover:bg-gray-700/30'
+                        }`}
+                      >
+                        <FileText className="w-3 h-3 mr-2" />
+                        <span>{child.name}</span>
+                      </button>
+                    )}
+                  </div>
                 ))}
               </motion.div>
             )}

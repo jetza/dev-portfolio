@@ -1,38 +1,43 @@
 export const aboutData = {
   name: "Jelena Miodragović",
-  role: "Frontend Developer",
+  role: "Full Stack Software Developer",
   location: "Belgrade, Serbia",
-  email: "jmiodragovic.dev@gmail.com",
-  phone: "+381 62 428 700",
+  email: "jelena-miodragovic@live.com",
+  phone: "+387 65 271 124",
   linkedin: {
-    url: "https://www.linkedin.com/in/jelena-miodragovic/",
-    display: "linkedin.com/in/jelena-miodragovic"
+    url: "https://www.linkedin.com/in/jelenamiodragovic/",
+    display: "linkedin.com/in/jelenamiodragovic"
+  },
+  profilemvp:{
+    url: "https://mvp.microsoft.com/en-US/MVP/profile/672cfb49-232d-4415-8889-720ef0dce811",
+    display: "MVP - Microsoft Most Valuable Professional"
   },
   github: {
-    url: "https://github.com/jelenamiodragovic",
-    display: "github.com/jelenamiodragovic"
+    url: "https://github.com/jetzaperetza",
+    display: "github.com/jetzaperetza"
   },
   introduction: [
-    "I specialize in building responsive, user-centric web applications using React, Next.js, Vue.js, and modern JavaScript frameworks.",
-    "With expertise in HTML5, CSS3, TypeScript, Tailwind CSS, and SCSS, I create seamless user experiences through clean, maintainable code."
+    "FullStack Developer with 5+ years of experience in building scalable web and mobile applications using React, React Native, Next.js, TypeScript, and Redux. Experienced in UI/UX design implementation with Figma, InVision, and responsive styling using SCSS, TailwindCSS, and Bootstrap. Strong background in manual testing, debugging, and optimizing performance.",
+    "Team player with a track record of collaborating in cross-functional teams, actively participating in code reviews, and contributing to process improvements. Passionate about mentoring, public speaking, and staying up-to-date with the latest technologies. Recognized Microsoft MVP for contributions to the developer community.",
+    "Open to remote, hybrid, or onsite positions across Europe or globally, including opportunities requiring visa sponsorship."
   ],
   cards: [
     {
       icon: "MapPin",
       title: "Location",
-      description: "Belgrade, Serbia"
+      description: "Belgrade, Serbia / Remote"
     },
     {
       icon: "Briefcase",
       title: "Experience",
-      description: "Frontend Developer"
+      description: "Full Stack Developer"
     },
     {
       icon: "GraduationCap",
       title: "Education",
-      description: "Self-taught Developer"
+      description: "(M.E.) Master of Engineering in Information Technology, University of Novi Sad - Technical faculty \"Mihajlo Pupin\"  2018 – 2019."
     }
-  ],
+  ],//todo
   whatIDo: {
     title: "What I Do",
     items: [

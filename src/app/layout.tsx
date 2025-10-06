@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jelena Miodragović - Frontend Developer Portfolio",
-  description: "Interactive portfolio showcasing my work as a Frontend Developer specializing in React, Next.js, and Vue.js",
+  title: "Jelena Miodragović - Full Stack Software Developer Portfolio",
+  description: "Interactive portfolio showcasing my work as a Full Stack Software Developer and Educator.",
 };
 
 export default function RootLayout({

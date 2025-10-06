@@ -22,7 +22,7 @@ export default function Home() {
           <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
             Jelena Miodragović
           </h1>
-          <p className="text-xl text-gray-400 mt-2">Frontend Developer</p>
+          <p className="text-xl text-gray-400 mt-2">Full Stack Software Developer | Educator | Microsoft MVP</p>
         </motion.header>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">

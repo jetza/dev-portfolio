@@ -34,6 +34,7 @@ export default function AboutSection() {
           <p className="leading-relaxed mt-2">
             <strong>Contact:</strong> {aboutData.email} | {aboutData.phone}<br/>
             <strong>LinkedIn:</strong> <a href={aboutData.linkedin.url} target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300">{aboutData.linkedin.display}</a><br/>
+            <strong>MVP Profile:</strong> <a href={aboutData.profilemvp.url} target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300">{aboutData.profilemvp.display}</a><br/>
             <strong>GitHub:</strong> <a href={aboutData.github.url} target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300">{aboutData.github.display}</a>
           </p>
         </div>

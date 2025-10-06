@@ -3,8 +3,11 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import AboutSection from './sections/AboutSection';
 import ExperienceSection from './sections/ExperienceSection';
+import EducatorSection from './sections/EducatorSection';
+import TechnicalSupportSection from './sections/TechnicalSupportSection';
 import SkillsSection from './sections/SkillsSection';
 import CertificatesSection from './sections/CertificatesSection';
+import AwardsSection from './sections/AwardsSection';
 import HobbiesSection from './sections/HobbiesSection';
 import ProjectsSection from './sections/ProjectsSection';
 import CodeSnippetsSection from './sections/CodeSnippetsSection';
@@ -17,8 +20,11 @@ interface MainContentProps {
 const sections: { [key: string]: React.ReactElement } = {
   about: <AboutSection />,
   experience: <ExperienceSection />,
+  educator: <EducatorSection />,
+  'technical-support': <TechnicalSupportSection />,
   skills: <SkillsSection />,
   certificates: <CertificatesSection />,
+  awards: <AwardsSection />,
   hobbies: <HobbiesSection />,
   projects: <ProjectsSection />,
   'code-snippets': <CodeSnippetsSection />,
