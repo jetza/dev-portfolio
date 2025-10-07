@@ -1,13 +1,10 @@
 'use client';
-
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Star, X, Calendar, Code, CheckCircle, Gamepad2, Smartphone, Bot, MessageSquare, Car, Lightbulb, Users, Presentation, BarChart3, Settings } from 'lucide-react';
 import { useState } from 'react';
 import Portal from '@/components/Portal';
 import { Project } from '@/types/project';
 import { projects } from '@/data/projects';
-
-// Map icon names to Lucide components
 const iconMap: { [key: string]: React.ComponentType<{ className?: string }> } = {
   Gamepad2,
   Smartphone,
@@ -20,12 +17,9 @@ const iconMap: { [key: string]: React.ComponentType<{ className?: string }> } = 
   BarChart3,
   Settings,
 };
-
 export default function ProjectsSection() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
-  // Bento grid layout - different sizes for visual interest
   const getGridClasses = (index: number) => {
     const patterns = [
       'md:col-span-2', // Wide
@@ -37,7 +31,6 @@ export default function ProjectsSection() {
     ];
     return patterns[index % patterns.length];
   };
-
   return (
     <>
       <div className="space-y-6">
@@ -53,8 +46,7 @@ export default function ProjectsSection() {
             Here are some of the professional projects I have worked on throughout my career. Each project showcases different technologies and problem-solving approaches.
           </p>
         </motion.div>
-
-        {/* Bento Grid Layout */}
+        {}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-fr">
           {projects.map((project, index) => (
             <motion.div
@@ -85,22 +77,18 @@ export default function ProjectsSection() {
                     </span>
                   </div>
                 </div>
-
                 <h3 className="text-xl font-semibold text-lime-400 mb-2 group-hover:text-lime-300 transition-colors">
                   {project.title}
                 </h3>
-                
                 {project.duration && (
                   <p className="text-gray-400 text-xs mb-2 flex items-center gap-1">
                     <Calendar className="w-3 h-3" />
                     {project.duration}
                   </p>
                 )}
-                
                 <p className="text-gray-300 text-sm mb-4 line-clamp-3 flex-grow">
                   {project.description}
                 </p>
-
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.slice(0, 3).map((tag) => (
                     <span
@@ -116,7 +104,6 @@ export default function ProjectsSection() {
                     </span>
                   )}
                 </div>
-
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: hoveredProject === index ? 1 : 0, y: hoveredProject === index ? 0 : 10 }}
@@ -150,12 +137,11 @@ export default function ProjectsSection() {
           ))}
         </div>
       </div>
-
-      {/* Project Modal - Portal to body for true full screen */}
+      {}
       <AnimatePresence>
         {selectedProject && (
           <Portal>
-            {/* Full Screen Backdrop with Blur */}
+            {}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -163,8 +149,7 @@ export default function ProjectsSection() {
               onClick={() => setSelectedProject(null)}
               className="fixed inset-0 bg-black/80 backdrop-blur-md z-[9999]"
             />
-            
-            {/* Modal Container - Centered */}
+            {}
             <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 pointer-events-none">
               <motion.div
                 initial={{ scale: 0.9, opacity: 0, y: 50 }}
@@ -174,7 +159,7 @@ export default function ProjectsSection() {
                 onClick={(e) => e.stopPropagation()}
                 className="glass-dark rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border-2 border-lime-400/50 shadow-2xl pointer-events-auto"
               >
-                {/* Modal Header */}
+                {}
                 <div className="sticky top-0 glass-lime backdrop-blur-md p-6 border-b border-lime-400/30">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-4">
@@ -208,10 +193,9 @@ export default function ProjectsSection() {
                     </button>
                   </div>
                 </div>
-
-                {/* Modal Content */}
+                {}
                 <div className="p-6 space-y-6">
-                  {/* Description */}
+                  {}
                   <div>
                     <h3 className="text-xl font-semibold text-lime-400 mb-3 flex items-center gap-2">
                       <Code className="w-5 h-5" />
@@ -221,8 +205,7 @@ export default function ProjectsSection() {
                       {selectedProject.fullDescription || selectedProject.description}
                     </p>
                   </div>
-
-                  {/* Technologies */}
+                  {}
                   <div>
                     <h3 className="text-xl font-semibold text-lime-400 mb-3">Technologies Used</h3>
                     <div className="flex flex-wrap gap-2">
@@ -236,8 +219,7 @@ export default function ProjectsSection() {
                       ))}
                     </div>
                   </div>
-
-                  {/* Features */}
+                  {}
                   {selectedProject.features && (
                     <div>
                       <h3 className="text-xl font-semibold text-lime-400 mb-3 flex items-center gap-2">
@@ -260,8 +242,7 @@ export default function ProjectsSection() {
                       </ul>
                     </div>
                   )}
-
-                  {/* Links */}
+                  {}
                   <div className="flex gap-4 pt-4">
                     <a
                       href={selectedProject.github}

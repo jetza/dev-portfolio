@@ -1,5 +1,4 @@
 import { Experience } from '@/types/experience';
-
 export const experiences: Experience[] = [
   {
     title: 'Freelance Frontend Developer',
@@ -62,8 +61,6 @@ export const experiences: Experience[] = [
     techStack: 'React, Angular, Xamarin, ASP.NET Core, TypeScript, C#, SQL Server, Azure, Docker, Kubernetes, RabbitMQ, Microsoft Dynamics 365',
   },
 ];
-
-// Educator Experience
 export const educatorExperience: Experience[] = [
   {
     title: 'Educator & Mentor',
@@ -156,7 +153,6 @@ export const educatorExperience: Experience[] = [
     ],
   },
 ];
-
 export const experienceContent = {
   title: 'Work Experience',
   educator: {

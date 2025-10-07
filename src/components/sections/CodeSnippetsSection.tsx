@@ -1,22 +1,18 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Star, Info } from 'lucide-react';
 import { codeSnippets, codeSnippetsContent } from '@/data/codeSnippets';
-
 export default function CodeSnippetsSection() {
   const [selectedSnippet, setSelectedSnippet] = useState<number | null>(null);
   const [starredSnippets, setStarredSnippets] = useState<number[]>([]);
-
   const toggleStar = (id: number) => {
     setStarredSnippets(prev =>
       prev.includes(id) ? prev.filter(sid => sid !== id) : [...prev, id]
     );
   };
-
   return (
     <div className="space-y-6">
       <motion.div
@@ -30,7 +26,6 @@ export default function CodeSnippetsSection() {
           {codeSnippetsContent.subtitle}
         </p>
       </motion.div>
-
       <div className="space-y-4">
         {codeSnippets.map((snippet, index) => (
           <motion.div
@@ -71,7 +66,6 @@ export default function CodeSnippetsSection() {
                   </button>
                 </div>
               </div>
-
               <div className="flex flex-wrap gap-2 mb-4">
                 {snippet.tags.map((tag) => (
                   <span
@@ -82,7 +76,6 @@ export default function CodeSnippetsSection() {
                   </span>
                 ))}
               </div>
-
               {selectedSnippet === snippet.id && (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
@@ -94,7 +87,6 @@ export default function CodeSnippetsSection() {
                   <p className="text-gray-300 text-sm">{snippet.explanation}</p>
                 </motion.div>
               )}
-
               <div className="rounded-lg overflow-hidden">
                 <SyntaxHighlighter
                   language={snippet.language}

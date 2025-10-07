@@ -1,5 +1,4 @@
 'use client';
-
 import { motion, AnimatePresence } from 'framer-motion';
 import AboutSection from './sections/AboutSection';
 import ExperienceSection from './sections/ExperienceSection';
@@ -11,25 +10,23 @@ import HobbiesSection from './sections/HobbiesSection';
 import ProjectsSection from './sections/ProjectsSection';
 import CodeSnippetsSection from './sections/CodeSnippetsSection';
 import ContactSection from './sections/ContactSection';
-
 interface MainContentProps {
   activeSection: string;
+  isGameOpen: boolean;
 }
-
-const sections: { [key: string]: React.ReactElement } = {
-  about: <AboutSection />,
-  experience: <ExperienceSection />,
-  educator: <EducatorSection />,
-  skills: <SkillsSection />,
-  certificates: <CertificatesSection />,
-  awards: <AwardsSection />,
-  hobbies: <HobbiesSection />,
-  projects: <ProjectsSection />,
-  'code-snippets': <CodeSnippetsSection />,
-  contact: <ContactSection />,
-};
-
-export default function MainContent({ activeSection }: MainContentProps) {
+export default function MainContent({ activeSection, isGameOpen }: MainContentProps) {
+  const sections: { [key: string]: React.ReactElement } = {
+    about: <AboutSection />,
+    experience: <ExperienceSection />,
+    educator: <EducatorSection />,
+    skills: <SkillsSection />,
+    certificates: <CertificatesSection />,
+    awards: <AwardsSection />,
+    hobbies: <HobbiesSection />,
+    projects: <ProjectsSection isGameOpen={isGameOpen} />,
+    'code-snippets': <CodeSnippetsSection />,
+    contact: <ContactSection />,
+  };
   return (
     <div className="glass rounded-2xl p-8 border border-gray-700/50 min-h-[600px]">
       <AnimatePresence mode="wait">

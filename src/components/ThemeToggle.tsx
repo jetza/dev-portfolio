@@ -1,25 +1,34 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import { useTheme } from '@/context/ThemeContext';
 import { Zap, LayoutGrid } from 'lucide-react';
-
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
   const isCyber = theme === 'cyber';
-
   return (
     <motion.button
       initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: 0.5, duration: 0.5 }}
+      animate={{ 
+        opacity: 1, 
+        scale: 1,
+        y: [0, -10, 0]
+      }}
+      transition={{ 
+        opacity: { delay: 0.5, duration: 0.5 },
+        scale: { delay: 0.5, duration: 0.5 },
+        y: {
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }
+      }}
       onClick={toggleTheme}
       className="fixed top-8 right-8 z-50 group"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
       <div className="relative w-16 h-16 flex items-center justify-center">
-        {/* Glitch background layers */}
+        {}
         <motion.div
           animate={{ 
             x: isCyber ? [-2, 3, -1, 2, 0] : 0,
@@ -64,8 +73,7 @@ export default function ThemeToggle() {
             backgroundColor: 'rgba(168, 0, 119, 0.3)'
           }}
         />
-
-        {/* Main button */}
+        {}
         <motion.div
           animate={{
             boxShadow: isCyber 
@@ -91,7 +99,7 @@ export default function ThemeToggle() {
             }
           `}
         >
-          {/* Icon with glitch on cyber mode */}
+          {}
           <motion.div
             animate={isCyber ? {
               x: [0, -1, 1, 0],
@@ -110,8 +118,7 @@ export default function ThemeToggle() {
               <LayoutGrid className="w-7 h-7 text-lime-400" />
             )}
           </motion.div>
-
-          {/* Scan line effect on cyber mode */}
+          {}
           {isCyber && (
             <motion.div
               animate={{ 
@@ -127,8 +134,7 @@ export default function ThemeToggle() {
             />
           )}
         </motion.div>
-
-        {/* Rotating ring on hover */}
+        {}
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
@@ -139,12 +145,9 @@ export default function ThemeToggle() {
           <div className="absolute left-0 top-1/2 w-1 h-1 bg-cyan-400 rounded-full -translate-y-1/2" />
           <div className="absolute right-0 top-1/2 w-1 h-1 bg-red-500 rounded-full -translate-y-1/2" />
         </motion.div>
-
-        {/* Label */}
+        {}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileHover={{ opacity: 1, x: 0 }}
-          className="absolute right-full mr-3 px-3 py-1.5 glass border border-lime-400/30 rounded-lg whitespace-nowrap"
+          className="absolute right-full mr-3 px-3 py-1.5 glass border border-lime-400/30 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200"
         >
           <p className="text-xs font-bold text-lime-400 tracking-wider">
             {isCyber ? 'CYBER MODE' : 'MINIMAL MODE'}

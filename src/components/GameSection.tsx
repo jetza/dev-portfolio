@@ -1,12 +1,9 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import { useState, useEffect, useCallback } from 'react';
 import { X, RotateCcw, Trophy } from 'lucide-react';
 import { GameSectionProps, Direction, Position, GAME_CONFIG } from '@/types/game';
-
 const { gridSize: GRID_SIZE, cellSize: CELL_SIZE, initialSpeed: INITIAL_SPEED } = GAME_CONFIG;
-
 export default function GameSection({ setIsGameOpen }: GameSectionProps) {
   const [snake, setSnake] = useState<Position[]>([{ x: 10, y: 10 }]);
   const [food, setFood] = useState<Position>({ x: 15, y: 15 });
@@ -15,7 +12,6 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-
   const generateFood = useCallback(() => {
     const newFood = {
       x: Math.floor(Math.random() * GRID_SIZE),
@@ -23,7 +19,6 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
     };
     setFood(newFood);
   }, []);
-
   const resetGame = useCallback(() => {
     setSnake([{ x: 10, y: 10 }]);
     setDirection('RIGHT');
@@ -32,13 +27,10 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
     setIsPlaying(true);
     generateFood();
   }, [generateFood]);
-
   const checkCollision = useCallback((head: Position) => {
-    // Wall collision
     if (head.x < 0 || head.x >= GRID_SIZE || head.y < 0 || head.y >= GRID_SIZE) {
       return true;
     }
-    // Self collision
     for (let i = 0; i < snake.length - 1; i++) {
       if (snake[i].x === head.x && snake[i].y === head.y) {
         return true;
@@ -46,13 +38,10 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
     }
     return false;
   }, [snake]);
-
   const moveSnake = useCallback(() => {
     if (gameOver || !isPlaying) return;
-
     setSnake(prevSnake => {
       const head = { ...prevSnake[0] };
-
       switch (direction) {
         case 'UP':
           head.y -= 1;
@@ -67,7 +56,6 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
           head.x += 1;
           break;
       }
-
       if (checkCollision(head)) {
         setGameOver(true);
         setIsPlaying(false);
@@ -76,25 +64,19 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
         }
         return prevSnake;
       }
-
       const newSnake = [head, ...prevSnake];
-
-      // Check if food is eaten
       if (head.x === food.x && head.y === food.y) {
         setScore(prev => prev + 10);
         generateFood();
       } else {
         newSnake.pop();
       }
-
       return newSnake;
     });
   }, [direction, gameOver, isPlaying, food, score, highScore, checkCollision, generateFood]);
-
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (!isPlaying) return;
-
       switch (e.key) {
         case 'ArrowUp':
           if (direction !== 'DOWN') setDirection('UP');
@@ -110,17 +92,14 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
           break;
       }
     };
-
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [direction, isPlaying]);
-
   useEffect(() => {
     if (!isPlaying) return;
     const gameLoop = setInterval(moveSnake, INITIAL_SPEED);
     return () => clearInterval(gameLoop);
   }, [moveSnake, isPlaying]);
-
   return (
     <motion.div
       className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 h-fit sticky top-8"
@@ -134,9 +113,8 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
           <X className="w-5 h-5 text-gray-400" />
         </button>
       </div>
-
       <div className="space-y-4">
-        {/* Score Display */}
+        {}
         <div className="flex justify-between items-center">
           <div className="text-center">
             <p className="text-sm text-gray-400">Score</p>
@@ -150,8 +128,7 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
             <p className="text-2xl font-bold text-lime-400">{highScore}</p>
           </div>
         </div>
-
-        {/* Game Board */}
+        {}
         <div className="relative bg-gray-900 rounded-lg p-2 border border-gray-700">
           <div
             className="relative mx-auto"
@@ -161,7 +138,7 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
               background: 'repeating-linear-gradient(0deg, #1f2937 0px, #1f2937 1px, transparent 1px, transparent 15px), repeating-linear-gradient(90deg, #1f2937 0px, #1f2937 1px, transparent 1px, transparent 15px)',
             }}
           >
-            {/* Snake */}
+            {}
             {snake.map((segment, index) => (
               <div
                 key={index}
@@ -176,8 +153,7 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
                 }}
               />
             ))}
-
-            {/* Food */}
+            {}
             <div
               className="absolute bg-gradient-to-br from-lime-400 to-green-500 rounded-full animate-pulse"
               style={{
@@ -188,8 +164,7 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
                 boxShadow: '0 0 10px rgba(163, 230, 53, 0.6)'
               }}
             />
-
-            {/* Game Over Overlay */}
+            {}
             {gameOver && (
               <div className="absolute inset-0 bg-gray-900/90 flex items-center justify-center">
                 <div className="text-center">
@@ -198,8 +173,7 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
                 </div>
               </div>
             )}
-
-            {/* Start Screen */}
+            {}
             {!isPlaying && !gameOver && (
               <div className="absolute inset-0 bg-gray-900/90 flex items-center justify-center">
                 <div className="text-center">
@@ -210,8 +184,7 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
             )}
           </div>
         </div>
-
-        {/* Controls */}
+        {}
         <div className="space-y-2">
           {!isPlaying ? (
             <button
@@ -238,8 +211,7 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
               Pause
             </button>
           )}
-
-          {/* Mobile Controls */}
+          {}
           <div className="grid grid-cols-3 gap-2 mt-4">
             <div></div>
             <button
@@ -273,7 +245,6 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
             </button>
           </div>
         </div>
-
         <p className="text-xs text-gray-500 text-center">
           Use arrow keys or buttons to control the snake
         </p>

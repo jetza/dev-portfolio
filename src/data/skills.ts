@@ -2,12 +2,10 @@ export interface Skill {
   name: string;
   level: number;
 }
-
 export interface SkillCategory {
   category: string;
   skills: Skill[];
 }
-
 export const skillCategories: SkillCategory[] = [
   {
     category: 'Frontend Technologies',
@@ -82,8 +80,6 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
 ];
-
-
 export const skillsContent = {
   title: 'Skills & Technologies',
   currentlyLearning: {

@@ -1,9 +1,7 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import { Music, Book, Palette, Plane, Code2, Camera, Users, Calendar, Heart, MessageSquare, Lightbulb } from 'lucide-react';
 import { hobbies, hobbiesContent } from '@/data/hobbies';
-
 const iconMap = {
   Code2,
   Palette,
@@ -17,7 +15,6 @@ const iconMap = {
   MessageSquare,
   Lightbulb
 };
-
 export default function HobbiesSection() {
   return (
     <div className="space-y-6">
@@ -32,7 +29,6 @@ export default function HobbiesSection() {
           {hobbiesContent.subtitle}
         </p>
       </motion.div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {hobbies.map((hobby, index) => {
           const Icon = iconMap[hobby.icon as keyof typeof iconMap];
@@ -56,7 +52,6 @@ export default function HobbiesSection() {
           );
         })}
       </div>
-
       <motion.div
         initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
         whileInView={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }}

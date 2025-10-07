@@ -5,7 +5,6 @@ import {
   Mail 
 } from 'lucide-react';
 import { FolderItem } from '@/types/sidebar';
-
 export const folders: FolderItem[] = [
   {
     id: 'professional',

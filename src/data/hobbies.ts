@@ -4,7 +4,6 @@ export interface Hobby {
   description: string;
   color: string;
 }
-
 export const hobbies: Hobby[] = [
   {
     name: 'Mentoring & Knowledge Sharing',
@@ -43,7 +42,6 @@ export const hobbies: Hobby[] = [
     color: 'from-green-500 to-lime-400',
   },
 ];
-
 export const hobbiesContent = {
   title: 'Hobbies & Interests',
   subtitle: 'When I am not coding, I enjoy exploring various creative and recreational activities that keep me inspired and balanced.',

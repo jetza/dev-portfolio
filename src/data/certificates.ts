@@ -1,9 +1,7 @@
 import { CertificateOrAward } from '@/types/certificate';
-
 export type Certificate = CertificateOrAward & {
   category?: 'Certification' | 'Course' | 'Training';
 };
-
 export const certificates: Certificate[] = [
   {
     title: 'Azure AI Fundamentals',
@@ -57,7 +55,6 @@ export const certificates: Certificate[] = [
     category: 'Training',
   },
 ];
-
 export const certificatesContent = {
   title: 'Certificates & Achievements',
   continuousLearning: {

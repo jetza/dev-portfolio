@@ -1,9 +1,7 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import { Calendar, MapPin } from 'lucide-react';
 import { experiences, experienceContent } from '@/data/experience';
-
 export default function ExperienceSection() {
   return (
     <div className="space-y-6">
@@ -15,7 +13,6 @@ export default function ExperienceSection() {
           {experienceContent.title}
         </h2>
       </motion.div>
-
       <div className="space-y-6">
         {experiences.map((exp, index) => (
           <motion.div
@@ -48,7 +45,6 @@ export default function ExperienceSection() {
                 </div>
               </div>
             </div>
-
             <ul className="space-y-2 mb-4">
               {exp.description.map((item, i) => (
                 <li key={i} className="flex items-start text-gray-300">
@@ -57,7 +53,6 @@ export default function ExperienceSection() {
                 </li>
               ))}
             </ul>
-
             {exp.techStack && (
               <div className="mt-4 pt-4 border-t border-gray-700">
                 <p className="text-xs font-semibold text-lime-400 mb-3">Tech Stack:</p>
@@ -72,7 +67,6 @@ export default function ExperienceSection() {
                       ['#65a30d', '#a3e635'], // lime-600 to lime
                     ];
                     const [color1, color2] = gradients[techIndex % gradients.length];
-                    
                     return (
                       <motion.span
                         key={techIndex}

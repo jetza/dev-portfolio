@@ -1,15 +1,12 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import { MapPin, Briefcase, GraduationCap } from 'lucide-react';
 import { aboutData } from '@/data/about';
-
 const iconMap = {
   MapPin,
   Briefcase,
   GraduationCap
 };
-
 export default function AboutSection() {
   return (
     <div className="space-y-6">
@@ -39,7 +36,6 @@ export default function AboutSection() {
           </p>
         </div>
       </motion.div>
-
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -57,7 +53,6 @@ export default function AboutSection() {
           );
         })}
       </motion.div>
-
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

@@ -9,6 +9,7 @@
   
   body {
     @apply antialiased bg-black text-white;
+    cursor: none; /* Sakrij default kursor */
   }
 
   /* Custom variable font support */
@@ -16,6 +17,11 @@
     body {
       font-family: 'Inter Variable', system-ui, sans-serif;
     }
+  }
+
+  /* Custom cyber cursor */
+  * {
+    cursor: none !important;
   }
 }
 
@@ -39,6 +45,8 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(163, 230, 53, 0.3);
+  box-sizing: border-box;
+  isolation: isolate;
 }
 
 @layer components {
@@ -114,14 +122,124 @@
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #1f2937;
+  background-color: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #9333ea;
+  background: linear-gradient(
+    180deg,
+    #a3e635 0%,
+    #b8d944 20%,
+    #cccc66 40%,
+    #cc9977 60%,
+    #bb6677 80%,
+    #a80077 100%
+  );
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #a855f7;
+  background: linear-gradient(
+    180deg,
+    #84cc16 0%,
+    #98b831 20%,
+    #aaaa55 40%,
+    #aa7766 60%,
+    #995566 80%,
+    #8a0062 100%
+  );
+  box-shadow: 0 0 8px rgba(163, 230, 53, 0.6);
+}
+
+/* Glitch animacije za kartice */
+@keyframes glitch-1 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(2px, -2px);
+  }
+  66% {
+    transform: translate(-2px, 2px);
+  }
+}
+
+@keyframes glitch-2 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(-2px, 2px);
+  }
+  66% {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes glitch-3 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(3px, -1px);
+  }
+  50% {
+    transform: translate(-1px, 3px);
+  }
+  75% {
+    transform: translate(-3px, -2px);
+  }
+}
+
+@keyframes glitch-text-1 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(2px, -2px);
+  }
+  40% {
+    transform: translate(-2px, 2px);
+  }
+  60% {
+    transform: translate(2px, 1px);
+  }
+  80% {
+    transform: translate(-1px, -2px);
+  }
+}
+
+@keyframes glitch-text-2 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-2px, 2px);
+  }
+  50% {
+    transform: translate(2px, -1px);
+  }
+  75% {
+    transform: translate(-1px, 2px);
+  }
+}
+
+.animate-glitch-1 {
+  animation: glitch-1 0.3s infinite;
+}
+
+.animate-glitch-2 {
+  animation: glitch-2 0.4s infinite;
+}
+
+.animate-glitch-3 {
+  animation: glitch-3 0.35s infinite;
+}
+
+.animate-glitch-text-1 {
+  animation: glitch-text-1 0.4s infinite;
+}
+
+.animate-glitch-text-2 {
+  animation: glitch-text-2 0.5s infinite;
 }

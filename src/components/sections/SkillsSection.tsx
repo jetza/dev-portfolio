@@ -1,8 +1,6 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import { skillCategories, skillsContent } from '@/data/skills';
-
 export default function SkillsSection() {
   return (
     <div className="space-y-6">
@@ -14,7 +12,6 @@ export default function SkillsSection() {
           {skillsContent.title}
         </h2>
       </motion.div>
-
       <div className="space-y-8">
         {skillCategories.map((category, categoryIndex) => (
           <motion.div
@@ -55,7 +52,6 @@ export default function SkillsSection() {
           </motion.div>
         ))}
       </div>
-
       <motion.div
         initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
         whileInView={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }}

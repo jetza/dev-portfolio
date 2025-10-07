@@ -1,9 +1,7 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import { GraduationCap, MapPin, Calendar, ExternalLink } from 'lucide-react';
 import { educatorExperience, experienceContent } from '@/data/experience';
-
 export default function EducatorSection() {
   return (
     <div className="space-y-6">
@@ -16,7 +14,6 @@ export default function EducatorSection() {
         </h2>
         <p className="text-gray-400 mb-6">{experienceContent.educator.description}</p>
       </motion.div>
-
       <div className="space-y-6">
         {educatorExperience.map((exp, index) => (
           <motion.div
@@ -37,7 +34,6 @@ export default function EducatorSection() {
               </div>
               <GraduationCap className="w-8 h-8 text-lime-400 flex-shrink-0 ml-4" />
             </div>
-
             <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-400">
               <div className="flex items-center">
                 <MapPin className="w-4 h-4 mr-2" />
@@ -48,7 +44,6 @@ export default function EducatorSection() {
                 <span>{exp.period}</span>
               </div>
             </div>
-
             <ul className="space-y-2 mb-4">
               {exp.description.map((item, i) => (
                 <li key={i} className="flex items-start text-gray-300">
@@ -57,7 +52,6 @@ export default function EducatorSection() {
                 </li>
               ))}
             </ul>
-
             {exp.techStack && (
               <div className="mb-4 pb-4 border-b border-gray-700">
                 <p className="text-xs font-semibold text-lime-400 mb-3">Technologies:</p>
@@ -72,7 +66,6 @@ export default function EducatorSection() {
                       ['#65a30d', '#a3e635'], // lime-600 to lime
                     ];
                     const [color1, color2] = gradients[techIndex % gradients.length];
-                    
                     return (
                       <motion.span
                         key={techIndex}
@@ -103,7 +96,6 @@ export default function EducatorSection() {
                 </div>
               </div>
             )}
-
             {exp.link && (
               <a
                 href={exp.link}

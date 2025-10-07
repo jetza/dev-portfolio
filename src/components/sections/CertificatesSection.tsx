@@ -1,9 +1,7 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import { Award, Calendar, ExternalLink } from 'lucide-react';
 import { certificates, certificatesContent } from '@/data/certificates';
-
 export default function CertificatesSection() {
   return (
     <div className="space-y-6">
@@ -15,7 +13,6 @@ export default function CertificatesSection() {
           {certificatesContent.title}
         </h2>
       </motion.div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {certificates.map((cert, index) => (
           <motion.div
@@ -64,7 +61,6 @@ export default function CertificatesSection() {
           </motion.div>
         ))}
       </div>
-
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

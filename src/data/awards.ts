@@ -1,9 +1,7 @@
 import { CertificateOrAward } from '@/types/certificate';
-
 export type Award = CertificateOrAward & {
   category?: 'Professional' | 'Academic' | 'Community';
 };
-
 export const awards: Award[] = [
     {
     title: 'Microsoft Most Valued Professional (MVP) for Developer Technologies',
@@ -38,7 +36,6 @@ export const awards: Award[] = [
     link: 'https://mvp.microsoft.com/en-US/MVP/profile/672cfb49-232d-4415-8889-720ef0dce811'
   }
 ];
-
 export const awardsContent = {
   title: 'Awards & Recognition',
   description: {

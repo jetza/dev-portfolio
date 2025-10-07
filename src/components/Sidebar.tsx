@@ -1,5 +1,4 @@
 'use client';
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -10,15 +9,12 @@ import {
   FileText
 } from 'lucide-react';
 import { folders } from '@/data/sidebar';
-
 interface SidebarProps {
   activeSection: string;
   setActiveSection: (section: string) => void;
 }
-
 export default function Sidebar({ activeSection, setActiveSection }: SidebarProps) {
   const [openFolders, setOpenFolders] = useState<string[]>(['professional', 'personal', 'projects']);
-
   const toggleFolder = (folderId: string) => {
     setOpenFolders(prev =>
       prev.includes(folderId)
@@ -26,7 +22,6 @@ export default function Sidebar({ activeSection, setActiveSection }: SidebarProp
         : [...prev, folderId]
     );
   };
-
   return (
     <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-4 border border-gray-700">
       <h2 className="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wider">
@@ -56,7 +51,6 @@ export default function Sidebar({ activeSection, setActiveSection }: SidebarProp
               )}
               <span>{folder.name}</span>
             </button>
-
             {openFolders.includes(folder.id) && folder.children && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}

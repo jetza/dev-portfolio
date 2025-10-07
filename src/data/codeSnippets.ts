@@ -8,7 +8,6 @@ export interface CodeSnippet {
   stars: number;
   explanation: string;
 }
-
 export const codeSnippets: CodeSnippet[] = [
   {
     id: 1,
@@ -19,7 +18,6 @@ export const codeSnippets: CodeSnippet[] = [
     stars: 15,
     explanation: 'This hook provides a simple way to sync React state with localStorage, automatically handling serialization and deserialization.',
     code: `import { useState, useEffect } from 'react';
-
 export function useLocalStorage<T>(key: string, initialValue: T) {
   const [storedValue, setStoredValue] = useState<T>(() => {
     try {
@@ -30,7 +28,6 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
       return initialValue;
     }
   });
-
   const setValue = (value: T | ((val: T) => T)) => {
     try {
       const valueToStore = value instanceof Function ? value(storedValue) : value;
@@ -40,7 +37,6 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
       console.log(error);
     }
   };
-
   return [storedValue, setValue] as const;
 }`,
   },
@@ -54,21 +50,16 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     explanation: 'This debounce function delays the execution of a callback until after a specified wait time has passed since the last invocation. Perfect for search inputs and scroll events.',
     code: `export function debounce(func, wait) {
   let timeout;
-  
   return function executedFunction(...args) {
     const later = () => {
       clearTimeout(timeout);
       func(...args);
     };
-    
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
   };
 }
-
-// Usage example:
 const handleSearch = debounce((searchTerm) => {
-  // API call or expensive operation
   console.log('Searching for:', searchTerm);
 }, 300);`,
   },
@@ -85,7 +76,6 @@ const handleSearch = debounce((searchTerm) => {
   minWidth?: string;
   gap?: string;
 }
-
 export const ResponsiveGrid: React.FC<GridProps> = ({ 
   children, 
   minWidth = '250px',
@@ -117,24 +107,20 @@ export const ResponsiveGrid: React.FC<GridProps> = ({
   status: number;
   data?: any;
 }
-
 export class ApiErrorHandler {
   static handle(error: any): ApiError {
     if (error.response) {
-      // Server responded with error
       return {
         message: error.response.data?.message || 'Server error occurred',
         status: error.response.status,
         data: error.response.data,
       };
     } else if (error.request) {
-      // Request made but no response
       return {
         message: 'No response from server',
         status: 0,
       };
     } else {
-      // Error in request configuration
       return {
         message: error.message || 'Request failed',
         status: -1,
@@ -144,7 +130,6 @@ export class ApiErrorHandler {
 }`,
   },
 ];
-
 export const codeSnippetsContent = {
   title: 'Code Snippets',
   subtitle: 'Collection of useful code snippets and utilities I have created. Star your favorites!'

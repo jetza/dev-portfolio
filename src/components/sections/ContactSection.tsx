@@ -1,15 +1,12 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Send, Mail, User, MessageSquare, CheckCircle, Linkedin, Github, Phone } from 'lucide-react';
 import { contactData } from '@/data/contact';
-
 const iconMap = {
   Linkedin,
   Github
 };
-
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
@@ -18,31 +15,23 @@ export default function ContactSection() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
     setIsSubmitted(true);
     setIsSubmitting(false);
-    
-    // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({ name: '', email: '', message: '' });
     }, 3000);
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
   };
-
   return (
     <div className="space-y-6">
       <motion.div
@@ -56,9 +45,8 @@ export default function ContactSection() {
           {contactData.subtitle}
         </p>
       </motion.div>
-
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Contact Form */}
+        {}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -83,7 +71,6 @@ export default function ContactSection() {
                 />
               </div>
             </div>
-
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                 Email
@@ -102,7 +89,6 @@ export default function ContactSection() {
                 />
               </div>
             </div>
-
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
                 Message
@@ -121,7 +107,6 @@ export default function ContactSection() {
                 />
               </div>
             </div>
-
             <motion.button
               type="submit"
               disabled={isSubmitting || isSubmitted}
@@ -152,8 +137,7 @@ export default function ContactSection() {
             </motion.button>
           </form>
         </motion.div>
-
-        {/* Contact Info */}
+        {}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -177,7 +161,6 @@ export default function ContactSection() {
               </div>
             </div>
           </div>
-
           <div className="glass p-6 rounded-lg">
             <h3 className="text-xl font-semibold text-lime-400 mb-4">Connect With Me</h3>
             <div className="flex gap-4">
@@ -198,7 +181,6 @@ export default function ContactSection() {
               })}
             </div>
           </div>
-
           <div className="glass-lime p-6 rounded-lg">
             <h3 className="text-lg font-semibold text-lime-400 mb-2">{contactData.closingMessage.title}</h3>
             <p className="text-gray-300 text-sm">
@@ -210,7 +192,6 @@ export default function ContactSection() {
     </div>
   );
 }
-
 function MapPin({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">

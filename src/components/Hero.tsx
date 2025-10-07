@@ -1,32 +1,26 @@
 'use client';
-
 import { motion } from 'framer-motion';
-
 interface HeroProps {
   onNavigate?: (section: string) => void;
 }
-
 export default function Hero({ onNavigate }: HeroProps) {
   const scrollToProjects = () => {
     const projectsSection = document.getElementById('portfolio-content');
     projectsSection?.scrollIntoView({ behavior: 'smooth' });
     onNavigate?.('projects');
   };
-
   const scrollToContact = () => {
     const contactSection = document.getElementById('portfolio-content');
     contactSection?.scrollIntoView({ behavior: 'smooth' });
     onNavigate?.('contact');
   };
-
   return (
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden px-4">
-      {/* Animated background gradient */}
+      {}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(163,230,53,0.1),transparent_50%)]" />
       </div>
-
-      {/* Floating geometric shapes */}
+      {}
       <motion.div
         animate={{
           y: [0, -20, 0],
@@ -39,7 +33,6 @@ export default function Hero({ onNavigate }: HeroProps) {
         }}
         className="absolute top-20 right-20 w-32 h-32 bg-lime-400/20 rounded-3xl blur-xl"
       />
-      
       <motion.div
         animate={{
           y: [0, 20, 0],
@@ -52,15 +45,14 @@ export default function Hero({ onNavigate }: HeroProps) {
         }}
         className="absolute bottom-20 left-20 w-48 h-48 bg-lime-400/10 rounded-full blur-2xl"
       />
-
-      {/* Hero Content */}
+      {}
       <div className="relative z-10 max-w-7xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          {/* Oversized bold headline */}
+          {}
           <h1 
             className="text-7xl md:text-9xl lg:text-[12rem] font-black leading-none mb-6 tracking-tight"
             style={{
@@ -74,7 +66,6 @@ export default function Hero({ onNavigate }: HeroProps) {
           >
             Jelena
           </h1>
-          
           <motion.h2 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -84,7 +75,6 @@ export default function Hero({ onNavigate }: HeroProps) {
           >
             Miodragović
           </motion.h2>
-
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -93,8 +83,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           >
             Full Stack Developer | Educator | Microsoft MVP
           </motion.p>
-
-          {/* CTA Buttons */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -115,8 +104,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             </button>
           </motion.div>
         </motion.div>
-
-        {/* Scroll indicator - Glitch arrow */}
+        {}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -125,9 +113,9 @@ export default function Hero({ onNavigate }: HeroProps) {
           onClick={scrollToProjects}
         >
           <div className="relative flex flex-col items-center gap-4">
-            {/* Main glitchy arrow container */}
+            {}
             <div className="relative w-32 h-32 flex items-center justify-center">
-              {/* Background glow - mixed colors */}
+              {}
               <motion.div
                 animate={{ 
                   scale: [1, 1.3, 1],
@@ -152,8 +140,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 }}
                 className="absolute inset-0 bg-magenta-500/20 rounded-full blur-3xl"
               />
-              
-              {/* Glitch layer 1 - Red offset */}
+              {}
               <motion.div
                 animate={{ 
                   x: [-4, 5, -3, 4, -2, 0],
@@ -171,8 +158,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               >
                 ↓
               </motion.div>
-              
-              {/* Glitch layer 2 - Cyan offset */}
+              {}
               <motion.div
                 animate={{ 
                   x: [4, -5, 3, -4, 2, 0],
@@ -191,8 +177,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               >
                 ↓
               </motion.div>
-              
-              {/* Glitch layer 3 - Magenta offset */}
+              {}
               <motion.div
                 animate={{ 
                   x: [0, -3, 3, -2, 2, 0],
@@ -214,8 +199,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               >
                 ↓
               </motion.div>
-              
-              {/* Main arrow */}
+              {}
               <motion.div
                 animate={{ 
                   y: [0, 10, 0],
@@ -233,8 +217,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               >
                 ↓
               </motion.div>
-              
-              {/* Intense glitch flashes */}
+              {}
               <motion.div
                 animate={{ 
                   opacity: [0, 1, 0, 1, 0, 1, 0],
@@ -253,8 +236,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               >
                 ↓
               </motion.div>
-              
-              {/* Horizontal scan lines - multiple */}
+              {}
               <motion.div
                 animate={{ 
                   y: [-60, 60],
@@ -280,8 +262,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 }}
                 className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-magenta-500/50 to-transparent"
               />
-              
-              {/* Digital noise blocks */}
+              {}
               <motion.div
                 animate={{ 
                   opacity: [0, 0.7, 0, 0.5, 0],
@@ -310,8 +291,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 style={{ mixBlendMode: 'screen' }}
               />
             </div>
-            
-            {/* Glitchy text */}
+            {}
             <motion.p
               animate={{ 
                 opacity: [1, 0.6, 1, 0.4, 1, 0.7, 1],
