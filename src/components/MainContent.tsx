@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import AboutSection from './sections/AboutSection';
 import ExperienceSection from './sections/ExperienceSection';
 import EducatorSection from './sections/EducatorSection';
-import TechnicalSupportSection from './sections/TechnicalSupportSection';
 import SkillsSection from './sections/SkillsSection';
 import CertificatesSection from './sections/CertificatesSection';
 import AwardsSection from './sections/AwardsSection';
@@ -21,7 +20,6 @@ const sections: { [key: string]: React.ReactElement } = {
   about: <AboutSection />,
   experience: <ExperienceSection />,
   educator: <EducatorSection />,
-  'technical-support': <TechnicalSupportSection />,
   skills: <SkillsSection />,
   certificates: <CertificatesSection />,
   awards: <AwardsSection />,
@@ -33,14 +31,14 @@ const sections: { [key: string]: React.ReactElement } = {
 
 export default function MainContent({ activeSection }: MainContentProps) {
   return (
-    <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 min-h-[600px]">
+    <div className="glass rounded-2xl p-8 border border-gray-700/50 min-h-[600px]">
       <AnimatePresence mode="wait">
         <motion.div
           key={activeSection}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
         >
           {sections[activeSection] || <AboutSection />}
         </motion.div>

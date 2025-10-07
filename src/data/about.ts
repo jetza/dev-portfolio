@@ -35,7 +35,7 @@ export const aboutData = {
     {
       icon: "GraduationCap",
       title: "Education",
-      description: "(M.E.) Master of Engineering in Information Technology, University of Novi Sad - Technical faculty \"Mihajlo Pupin\"  2018 – 2019."
+      description: "(M.E.) Master of Engineering in Information Technology"
     }
   ],//todo
   whatIDo: {

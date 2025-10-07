@@ -18,7 +18,6 @@ export const folders: FolderItem[] = [
         children: [
           { id: 'experience', name: 'Software Development' },
           { id: 'educator', name: 'Education' },
-          { id: 'technical-support', name: 'Technical Support' },
         ]
       },
       { id: 'skills', name: 'Skills' },

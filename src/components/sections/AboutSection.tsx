@@ -18,13 +18,13 @@ export default function AboutSection() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-4">
+        <h2 className="text-3xl font-bold text-transparent bg-clip-text mb-4" style={{backgroundImage: 'linear-gradient(to right, #ffffff, #a3e635, #ffffff)'}}>
           About Me
         </h2>
         <div className="space-y-4 text-gray-300">
           <p className="text-lg leading-relaxed">
-            Hi! I&apos;m <span className="text-purple-400 font-semibold">{aboutData.name}</span>, 
-            a passionate <span className="text-pink-400 font-semibold">{aboutData.role}</span> based in {aboutData.location}.
+            Hi! I&apos;m <span className="text-lime-400 font-semibold">{aboutData.name}</span>, 
+            a passionate <span className="text-lime-300 font-semibold">{aboutData.role}</span> based in {aboutData.location}.
           </p>
           {aboutData.introduction.map((paragraph, index) => (
             <p key={index} className="leading-relaxed">
@@ -33,9 +33,9 @@ export default function AboutSection() {
           ))}
           <p className="leading-relaxed mt-2">
             <strong>Contact:</strong> {aboutData.email} | {aboutData.phone}<br/>
-            <strong>LinkedIn:</strong> <a href={aboutData.linkedin.url} target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300">{aboutData.linkedin.display}</a><br/>
-            <strong>MVP Profile:</strong> <a href={aboutData.profilemvp.url} target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300">{aboutData.profilemvp.display}</a><br/>
-            <strong>GitHub:</strong> <a href={aboutData.github.url} target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300">{aboutData.github.display}</a>
+            <strong>LinkedIn:</strong> <a href={aboutData.linkedin.url} target="_blank" rel="noopener noreferrer" className="text-lime-400 hover:text-lime-300 transition-colors">{aboutData.linkedin.display}</a><br/>
+            <strong>MVP Profile:</strong> <a href={aboutData.profilemvp.url} target="_blank" rel="noopener noreferrer" className="text-lime-400 hover:text-lime-300 transition-colors">{aboutData.profilemvp.display}</a><br/>
+            <strong>GitHub:</strong> <a href={aboutData.github.url} target="_blank" rel="noopener noreferrer" className="text-lime-400 hover:text-lime-300 transition-colors">{aboutData.github.display}</a>
           </p>
         </div>
       </motion.div>
@@ -49,8 +49,8 @@ export default function AboutSection() {
         {aboutData.cards.map((card, index) => {
           const Icon = iconMap[card.icon as keyof typeof iconMap];
           return (
-            <div key={index} className="bg-gray-700/30 p-4 rounded-lg border border-gray-600 hover:border-purple-500 transition-all duration-300 card-hover">
-              <Icon className="w-8 h-8 text-purple-400 mb-2" />
+            <div key={index} className="glass p-4 rounded-lg hover:border-lime-400/50 transition-all duration-300 card-hover group">
+              <Icon className="w-8 h-8 text-lime-400 mb-2 group-hover:scale-110 transition-transform" />
               <h3 className="font-semibold text-gray-200 mb-1">{card.title}</h3>
               <p className="text-gray-400 text-sm">{card.description}</p>
             </div>
@@ -62,13 +62,13 @@ export default function AboutSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
-        className="mt-8 p-6 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-lg border border-purple-500/30"
+        className="mt-8 p-6 glass-lime rounded-lg"
       >
-        <h3 className="text-xl font-semibold text-purple-300 mb-3">{aboutData.whatIDo.title}</h3>
+        <h3 className="text-xl font-semibold text-lime-400 mb-3">{aboutData.whatIDo.title}</h3>
         <ul className="space-y-2 text-gray-300">
           {aboutData.whatIDo.items.map((item, index) => (
             <li key={index} className="flex items-start">
-              <span className="text-purple-400 mr-2">▹</span>
+              <span className="text-lime-400 mr-2">▹</span>
               <span>{item}</span>
             </li>
           ))}

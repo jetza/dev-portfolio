@@ -126,7 +126,7 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
       className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 h-fit sticky top-8"
     >
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-xl font-bold text-purple-400">Snake Game</h3>
+        <h3 className="text-xl font-bold text-lime-400">Snake Game</h3>
         <button
           onClick={() => setIsGameOpen(false)}
           className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
@@ -140,14 +140,14 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
         <div className="flex justify-between items-center">
           <div className="text-center">
             <p className="text-sm text-gray-400">Score</p>
-            <p className="text-2xl font-bold text-purple-400">{score}</p>
+            <p className="text-2xl font-bold text-lime-400">{score}</p>
           </div>
           <div className="text-center">
             <p className="text-sm text-gray-400 flex items-center gap-1">
               <Trophy className="w-4 h-4" />
               High Score
             </p>
-            <p className="text-2xl font-bold text-pink-400">{highScore}</p>
+            <p className="text-2xl font-bold text-lime-400">{highScore}</p>
           </div>
         </div>
 
@@ -166,7 +166,7 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
               <div
                 key={index}
                 className={`absolute rounded-sm ${
-                  index === 0 ? 'bg-gradient-to-br from-purple-500 to-purple-600' : 'bg-purple-600'
+                  index === 0 ? 'bg-gradient-to-br from-lime-400 to-lime-500' : 'bg-lime-500'
                 }`}
                 style={{
                   left: segment.x * CELL_SIZE,
@@ -179,12 +179,13 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
 
             {/* Food */}
             <div
-              className="absolute bg-gradient-to-br from-pink-500 to-red-500 rounded-full animate-pulse"
+              className="absolute bg-gradient-to-br from-lime-400 to-green-500 rounded-full animate-pulse"
               style={{
                 left: food.x * CELL_SIZE,
                 top: food.y * CELL_SIZE,
                 width: CELL_SIZE - 2,
                 height: CELL_SIZE - 2,
+                boxShadow: '0 0 10px rgba(163, 230, 53, 0.6)'
               }}
             />
 
@@ -192,7 +193,7 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
             {gameOver && (
               <div className="absolute inset-0 bg-gray-900/90 flex items-center justify-center">
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-red-400 mb-2">Game Over!</p>
+                  <p className="text-2xl font-bold text-lime-400 mb-2">Game Over!</p>
                   <p className="text-gray-400 mb-4">Score: {score}</p>
                 </div>
               </div>
@@ -202,7 +203,7 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
             {!isPlaying && !gameOver && (
               <div className="absolute inset-0 bg-gray-900/90 flex items-center justify-center">
                 <div className="text-center">
-                  <p className="text-xl font-bold text-purple-400 mb-2">Ready to Play?</p>
+                  <p className="text-xl font-bold text-lime-400 mb-2">Ready to Play?</p>
                   <p className="text-sm text-gray-400">Use arrow keys to move</p>
                 </div>
               </div>
@@ -215,7 +216,7 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
           {!isPlaying ? (
             <button
               onClick={resetGame}
-              className="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg transition-all flex items-center justify-center gap-2"
+              className="w-full py-3 bg-gradient-to-r from-lime-500 to-green-500 hover:from-lime-600 hover:to-green-600 text-black font-bold rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-lime-400/50"
             >
               {gameOver ? (
                 <>

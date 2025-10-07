@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Music, Book, Palette, Plane, Code2, Camera } from 'lucide-react';
+import { Music, Book, Palette, Plane, Code2, Camera, Users, Calendar, Heart, MessageSquare, Lightbulb } from 'lucide-react';
 import { hobbies, hobbiesContent } from '@/data/hobbies';
 
 const iconMap = {
@@ -10,7 +10,12 @@ const iconMap = {
   Book,
   Music,
   Camera,
-  Plane
+  Plane,
+  Users,
+  Calendar,
+  Heart,
+  MessageSquare,
+  Lightbulb
 };
 
 export default function HobbiesSection() {
@@ -20,7 +25,7 @@ export default function HobbiesSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
-        <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-6">
+        <h2 className="text-3xl font-bold text-transparent bg-clip-text mb-6" style={{backgroundImage: 'linear-gradient(to right, #ffffff, #a3e635, #ffffff)'}}>
           {hobbiesContent.title}
         </h2>
         <p className="text-gray-300 mb-6">
@@ -34,20 +39,18 @@ export default function HobbiesSection() {
           return (
             <motion.div
               key={hobby.name}
-              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ 
-                delay: index * 0.1,
-                type: 'spring',
-                stiffness: 100,
-              }}
-              whileHover={{ scale: 1.05, rotate: 2 }}
-              className="bg-gray-700/30 p-5 rounded-lg border border-gray-600 hover:border-purple-500 transition-all duration-300 cursor-pointer"
+              initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
+              animate={index < 3 ? { opacity: 1, clipPath: 'inset(0 0% 0 0)' } : undefined}
+              whileInView={index >= 3 ? { opacity: 1, clipPath: 'inset(0 0% 0 0)' } : undefined}
+              viewport={index >= 3 ? { once: true, margin: '0px 0px -200px 0px' } : undefined}
+              transition={{ delay: index < 3 ? index * 0.2 : 0, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              className="glass p-5 rounded-lg hover:border-lime-400/50 transition-all duration-300 cursor-pointer group"
             >
-              <div className={`w-12 h-12 bg-gradient-to-br ${hobby.color} rounded-lg flex items-center justify-center mb-4`}>
+              <div className={`w-12 h-12 bg-gradient-to-br ${hobby.color} rounded-lg shadow-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                 <Icon className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-purple-300 mb-2">{hobby.name}</h3>
+              <h3 className="text-lg font-semibold text-lime-400 mb-2">{hobby.name}</h3>
               <p className="text-gray-400 text-sm">{hobby.description}</p>
             </motion.div>
           );
@@ -55,12 +58,13 @@ export default function HobbiesSection() {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8 }}
-        className="mt-8 p-6 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-lg border border-purple-500/30"
+        initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
+        whileInView={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }}
+        viewport={{ once: true, margin: '0px 0px -200px 0px' }}
+        transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+        className="mt-8 p-6 glass-lime rounded-lg"
       >
-        <h3 className="text-xl font-semibold text-purple-300 mb-3">{hobbiesContent.philosophy.title}</h3>
+        <h3 className="text-xl font-semibold text-lime-400 mb-3">{hobbiesContent.philosophy.title}</h3>
         <p className="text-gray-300 leading-relaxed">
           {hobbiesContent.philosophy.description}
         </p>

@@ -2,26 +2,71 @@ import { Experience } from '@/types/experience';
 
 export const experiences: Experience[] = [
   {
-    title: 'Full Stack Software Developer',
-    location: 'Belgrade(Serbia), Banja Luka(Bosnia and Herzegovina), Remote',
-    period: '2019 - Present',
+    title: 'Freelance Frontend Developer',
+    company: 'Lrnium',
+    location: 'Remote',
+    period: 'December 2024 - Present',
     description: [
-      'Developed and maintained responsive web applications using React, Next.js, and Vue.js',
-      'Collaborated with clients to gather requirements and deliver custom web solutions',
-      'Implemented modern UI/UX designs with Tailwind CSS and SCSS',
-      'Integrated RESTful APIs and managed application state with Redux and Context API',
-      'Optimized application performance and ensured cross-browser compatibility',
-      'Built full-stack applications combining frontend with Node.js backend',
-      'Worked with MySQL, PostgreSQL, and MongoDB databases',
-      'Deployed applications on Vercel, Netlify, and traditional hosting platforms',
+      'Providing frontend development services for various clients',
+      'Building responsive web applications with modern technologies',
+      'Developing custom solutions tailored to client needs',
+      'Managing multiple projects and maintaining strong client relationships',
+      'Delivering high-quality code with focus on performance and user experience',
     ],
+    techStack: 'React, Next.js, TypeScript, Tailwind CSS, Node.js',
+  },
+  {
+    title: 'React Developer',
+    company: 'Diplomat Tech',
+    location: 'Remote',
+    period: 'May 2024 - December 2024',
+    description: [
+      'Developed and maintained enterprise-level Next.js/React applications',
+      'Migrated legacy platform to modern Next.js/React (TypeScript) stack',
+      'Built and optimized custom components with minimal external libraries',
+      'Integrated InCode OCR & Face Recognition platform for identity verification',
+      'Implemented multilingual support with custom translation tools',
+      'Collaborated with cross-functional teams to deliver high-quality features',
+    ],
+    techStack: 'React, Next.js, TypeScript, Zustand, SCSS, Minimal API, Identity Server, InVision, OCR, InCode',
+  },
+  {
+    title: 'React Native Developer',
+    company: 'Infopuls',
+    location: 'Banja Luka, Bosnia and Herzegovina',
+    period: 'August 2023 - April 2024',
+    description: [
+      'Developed mobile applications for iOS and Android platforms using React Native',
+      'Created features for social network: friend requests, location-based search, chat, and meeting scheduling',
+      'Built custom UI components aligned with Figma designs and optimized for mobile platforms',
+      'Worked closely with backend developer to sync environment and APIs',
+      'Implemented responsive designs and ensured cross-platform compatibility',
+    ],
+    techStack: 'React Native, Redux, Node.js, Prisma, Docker, Google API, Figma',
+  },
+  {
+    title: 'Full Stack Developer',
+    company: 'Avenga',
+    location: 'Banja Luka, Bosnia and Herzegovina',
+    period: 'December 2019 - August 2023',
+    description: [
+      'Developed and maintained multiple full-stack applications across various projects',
+      'Built internal Q&A platform with React and ASP.NET Core',
+      'Developed IoT smart lighting mobile app with Xamarin, Bluetooth LE, and Azure IoT',
+      'Created microservice-based estimation tool using Angular and RabbitMQ',
+      'Customized Microsoft Dynamics 365 plugins and templates for enterprise clients',
+      'Built vehicle technical information portal with React and .NET',
+      'Implemented authentication, authorization, and role-based access control',
+      'Worked with diverse tech stacks and delivered solutions for various client needs',
+    ],
+    techStack: 'React, Angular, Xamarin, ASP.NET Core, TypeScript, C#, SQL Server, Azure, Docker, Kubernetes, RabbitMQ, Microsoft Dynamics 365',
   },
 ];
 
 // Educator Experience
 export const educatorExperience: Experience[] = [
   {
-    title: 'Lecturer',
+    title: 'Educator & Mentor',
     company: 'Seavus IT Edukativni Centar',
     location: 'Banja Luka, Bosnia and Herzegovina',
     period: 'Mar 2023 - Present',
@@ -30,10 +75,11 @@ export const educatorExperience: Experience[] = [
       'Prepared comprehensive course materials, exercises, and projects to enhance student learning',
       'Mentored students through hands-on coding challenges, fostering practical skills and confidence',
     ],
+    techStack: 'HTML, CSS, JavaScript, React, Node.js, Git',
   },
   {
     title: 'Co-Organizer',
-    company: 'INIT Conference (INITConf.org)',
+    company: 'INIT Conference',
     location: 'Banja Luka, Bosnia and Herzegovina',
     period: '2019 - Present',
     description: [
@@ -67,16 +113,16 @@ export const educatorExperience: Experience[] = [
     ],
   },
   {
-    title: 'Instructor',
+    title: 'Educator & Mentor',
     company: 'JSGuru',
     location: 'Banja Luka, Bosnia and Herzegovina',
     period: '2017 - 2018',
     description: [
-      'Taught Python, robotics, and Scratch to children aged 6–14',
+      'Worked with children aged 6-14',
       'Designed and implemented curriculum, prepared students for competitions',
       'Managed daily educational activities and mentored young learners',
-      'Technologies: Python, Scratch, mBots, micro:bits',
     ],
+    techStack: 'Python, Scratch, mBots, micro:bits',
   },
   {
     title: 'Microsoft Student Ambassador',
@@ -84,7 +130,7 @@ export const educatorExperience: Experience[] = [
     location: 'Bosnia and Herzegovina',
     period: '2011 - 2017',
     description: [
-      'Organized and lectured in coding workshops, C# courses, PowerPoint training, and STEM activities',
+      'Organized and lectured in coding workshops, courses, training, and STEM activities',
       'Conducted workshops in elementary schools, high schools, and faculties',
       'Mentored students in technical projects, hackathons, and regional competitions',
     ],
@@ -111,40 +157,10 @@ export const educatorExperience: Experience[] = [
   },
 ];
 
-// Technical Support Experience
-export const technicalSupportExperience: Experience[] = [
-  {
-    title: 'Technical Support & Troubleshooting',
-    location: 'Various Projects',
-    period: '2005 - Present',
-    description: [
-      'Provided technical support and troubleshooting for software applications and systems',
-      'Resolved complex technical issues and provided solutions to clients',
-      'Maintained and updated system documentation',
-      'Collaborated with development teams to improve product quality',
-    ],
-  },
-  {
-    title: 'IT Support',
-    company: 'Banja Luka College',
-    location: 'Banja Luka, Bosnia and Herzegovina',
-    period: '2013 - 2014',
-    description: [
-      'Provided IT support and system maintenance for college infrastructure',
-      'Assisted faculty and students with technical issues',
-      'Managed hardware and software installations and updates',
-    ],
-  },
-];
-
 export const experienceContent = {
   title: 'Work Experience',
   educator: {
     title: 'Education & Community',
     description: 'Teaching programming, organizing tech events, and mentoring students in technology and software development',
-  },
-  technicalSupport: {
-    title: 'Technical Support',
-    description: 'Providing technical assistance, troubleshooting, and maintaining IT infrastructure',
   },
 };

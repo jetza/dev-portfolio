@@ -17,7 +17,7 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ activeSection, setActiveSection }: SidebarProps) {
-  const [openFolders, setOpenFolders] = useState<string[]>(['professional', 'personal']);
+  const [openFolders, setOpenFolders] = useState<string[]>(['professional', 'personal', 'projects']);
 
   const toggleFolder = (folderId: string) => {
     setOpenFolders(prev =>
@@ -50,9 +50,9 @@ export default function Sidebar({ activeSection, setActiveSection }: SidebarProp
                 <ChevronRight className="w-4 h-4 mr-1" />
               )}
               {openFolders.includes(folder.id) ? (
-                <FolderOpen className="w-4 h-4 mr-2 text-purple-400" />
+                <FolderOpen className="w-4 h-4 mr-2 text-lime-400" />
               ) : (
-                <Folder className="w-4 h-4 mr-2 text-purple-400" />
+                <Folder className="w-4 h-4 mr-2 text-lime-400" />
               )}
               <span>{folder.name}</span>
             </button>
@@ -78,9 +78,9 @@ export default function Sidebar({ activeSection, setActiveSection }: SidebarProp
                             <ChevronRight className="w-3 h-3 mr-1" />
                           )}
                           {openFolders.includes(child.id) ? (
-                            <FolderOpen className="w-3 h-3 mr-2 text-purple-400" />
+                            <FolderOpen className="w-3 h-3 mr-2 text-lime-400" />
                           ) : (
-                            <Folder className="w-3 h-3 mr-2 text-purple-400" />
+                            <Folder className="w-3 h-3 mr-2 text-lime-400" />
                           )}
                           <span>{child.name}</span>
                         </button>
@@ -94,10 +94,11 @@ export default function Sidebar({ activeSection, setActiveSection }: SidebarProp
                             {child.children.map((subChild) => (
                               <button
                                 key={subChild.id}
+                                data-section={subChild.id}
                                 onClick={() => setActiveSection(subChild.id)}
                                 className={`flex items-center w-full px-2 py-1.5 text-sm rounded transition-all duration-200 ${
                                   activeSection === subChild.id
-                                    ? 'bg-purple-600/30 text-purple-300 border-l-2 border-purple-400'
+                                    ? 'bg-lime-400/20 text-lime-300 border-l-2 border-lime-400'
                                     : 'text-gray-400 hover:text-gray-200 hover:bg-gray-700/30'
                                 }`}
                               >
@@ -110,10 +111,11 @@ export default function Sidebar({ activeSection, setActiveSection }: SidebarProp
                       </>
                     ) : (
                       <button
+                        data-section={child.id}
                         onClick={() => setActiveSection(child.id)}
                         className={`flex items-center w-full px-2 py-1.5 text-sm rounded transition-all duration-200 ${
                           activeSection === child.id
-                            ? 'bg-purple-600/30 text-purple-300 border-l-2 border-purple-400'
+                            ? 'bg-lime-400/20 text-lime-300 border-l-2 border-lime-400'
                             : 'text-gray-400 hover:text-gray-200 hover:bg-gray-700/30'
                         }`}
                       >

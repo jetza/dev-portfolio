@@ -2,28 +2,22 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Hero from '@/components/Hero';
 import Sidebar from '@/components/Sidebar';
 import MainContent from '@/components/MainContent';
 import GameSection from '@/components/GameSection';
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState('about');
+  const [activeSection, setActiveSection] = useState('projects');
   const [isGameOpen, setIsGameOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-100">
-      <div className="container mx-auto px-4 py-8">
-        <motion.header
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-8"
-        >
-          <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-            Jelena Miodragović
-          </h1>
-          <p className="text-xl text-gray-400 mt-2">Full Stack Software Developer | Educator | Microsoft MVP</p>
-        </motion.header>
+    <div className="min-h-screen bg-black text-white">
+      {/* Hero Section */}
+      <Hero onNavigate={setActiveSection} />
+
+      {/* Portfolio Content */}
+      <div id="portfolio-content" className="container mx-auto px-4 py-16">
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Sidebar - Folder Structure */}
@@ -67,11 +61,126 @@ export default function Home() {
             animate={{ scale: 1 }}
             transition={{ delay: 1, type: 'spring', stiffness: 260, damping: 20 }}
             onClick={() => setIsGameOpen(true)}
-            className="fixed bottom-8 right-8 bg-gradient-to-r from-purple-500 to-pink-600 text-white p-4 rounded-full shadow-2xl hover:shadow-purple-500/50 transition-shadow duration-300 z-50"
-            whileHover={{ scale: 1.1, rotate: 15 }}
-            whileTap={{ scale: 0.9 }}
+            className="fixed bottom-8 right-8 z-50 group"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <span className="text-2xl">🎮</span>
+            <div className="relative w-16 h-16 flex items-center justify-center">
+              {/* Glitch background layers */}
+              <motion.div
+                animate={{ 
+                  x: [-2, 3, -1, 2, 0],
+                  opacity: [0.7, 0.5, 0.8, 0.6]
+                }}
+                transition={{ 
+                  duration: 0.2,
+                  repeat: Infinity,
+                  repeatDelay: 2
+                }}
+                className="absolute inset-0 bg-red-500/30 rounded-full blur-sm"
+                style={{ mixBlendMode: 'screen' }}
+              />
+              <motion.div
+                animate={{ 
+                  x: [2, -3, 1, -2, 0],
+                  opacity: [0.6, 0.4, 0.7, 0.5]
+                }}
+                transition={{ 
+                  duration: 0.2,
+                  repeat: Infinity,
+                  repeatDelay: 2,
+                  delay: 0.05
+                }}
+                className="absolute inset-0 bg-cyan-400/30 rounded-full blur-sm"
+                style={{ mixBlendMode: 'screen' }}
+              />
+              <motion.div
+                animate={{ 
+                  x: [0, -2, 2, -1, 0],
+                  opacity: [0.5, 0.7, 0.4, 0.6]
+                }}
+                transition={{ 
+                  duration: 0.2,
+                  repeat: Infinity,
+                  repeatDelay: 2,
+                  delay: 0.1
+                }}
+                className="absolute inset-0 rounded-full blur-sm"
+                style={{ 
+                  mixBlendMode: 'screen',
+                  backgroundColor: 'rgba(168, 0, 119, 0.3)'
+                }}
+              />
+
+              {/* Main button */}
+              <motion.div
+                animate={{
+                  boxShadow: [
+                    '0 0 20px rgba(163, 230, 53, 0.5), 0 0 40px rgba(168, 0, 119, 0.3)',
+                    '0 0 30px rgba(163, 230, 53, 0.7), 0 0 50px rgba(168, 0, 119, 0.5)',
+                    '0 0 20px rgba(163, 230, 53, 0.5), 0 0 40px rgba(168, 0, 119, 0.3)',
+                  ]
+                }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-full h-full rounded-full bg-black/80 border-2 border-lime-400 backdrop-blur-md flex items-center justify-center"
+              >
+                {/* Gamepad emoji with glitch */}
+                <motion.span
+                  animate={{
+                    x: [0, -1, 1, 0],
+                    y: [0, 1, -1, 0],
+                  }}
+                  transition={{ 
+                    duration: 0.2,
+                    repeat: Infinity,
+                    repeatDelay: 3
+                  }}
+                  className="text-3xl"
+                  style={{
+                    filter: 'drop-shadow(0 0 8px rgba(163, 230, 53, 0.8))'
+                  }}
+                >
+                  🎮
+                </motion.span>
+
+                {/* Scan line effect */}
+                <motion.div
+                  animate={{ 
+                    y: [-30, 30],
+                    opacity: [0, 0.4, 0]
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                  className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-lime-400/70 to-transparent"
+                />
+              </motion.div>
+
+              {/* Rotating RGB dots on hover */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <div className="absolute top-0 left-1/2 w-1 h-1 bg-lime-400 rounded-full -translate-x-1/2" />
+                <div className="absolute bottom-0 left-1/2 w-1 h-1 bg-magenta-500 rounded-full -translate-x-1/2" />
+                <div className="absolute left-0 top-1/2 w-1 h-1 bg-cyan-400 rounded-full -translate-y-1/2" />
+                <div className="absolute right-0 top-1/2 w-1 h-1 bg-red-500 rounded-full -translate-y-1/2" />
+              </motion.div>
+
+              {/* Label */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileHover={{ opacity: 1, x: 0 }}
+                className="absolute right-full mr-3 px-3 py-1.5 glass border border-lime-400/30 rounded-lg whitespace-nowrap"
+              >
+                <p className="text-xs font-bold text-lime-400 tracking-wider">
+                  PLAY GAME
+                </p>
+              </motion.div>
+            </div>
           </motion.button>
         )}
       </div>

@@ -11,6 +11,11 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        magenta: {
+          DEFAULT: '#a80077',
+          500: '#a80077',
+          600: '#8a0062',
+        },
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-in',

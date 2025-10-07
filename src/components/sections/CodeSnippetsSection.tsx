@@ -23,7 +23,7 @@ export default function CodeSnippetsSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
-        <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-2">
+        <h2 className="text-3xl font-bold text-transparent bg-clip-text mb-2" style={{backgroundImage: 'linear-gradient(to right, #ffffff, #a3e635, #ffffff)'}}>
           {codeSnippetsContent.title}
         </h2>
         <p className="text-gray-400 mb-6">
@@ -38,12 +38,12 @@ export default function CodeSnippetsSection() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="bg-gray-700/30 rounded-lg border border-gray-600 hover:border-purple-500 transition-all duration-300 overflow-hidden"
+            className="glass rounded-lg hover:border-lime-400/50 transition-all duration-300 overflow-hidden"
           >
             <div className="p-5">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-purple-300 mb-1">{snippet.title}</h3>
+                  <h3 className="text-lg font-semibold text-lime-400 mb-1">{snippet.title}</h3>
                   <p className="text-gray-400 text-sm">{snippet.description}</p>
                 </div>
                 <div className="flex items-center gap-3">
@@ -52,7 +52,7 @@ export default function CodeSnippetsSection() {
                     className="p-2 hover:bg-gray-600 rounded transition-colors"
                     title="Show explanation"
                   >
-                    <Info className="w-5 h-5 text-gray-400 hover:text-purple-400" />
+                    <Info className="w-5 h-5 text-gray-400 hover:text-lime-400" />
                   </button>
                   <button
                     onClick={() => toggleStar(snippet.id)}
@@ -76,7 +76,7 @@ export default function CodeSnippetsSection() {
                 {snippet.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2 py-1 bg-purple-600/20 text-purple-300 rounded text-xs border border-purple-500/30"
+                    className="px-2 py-1 bg-lime-400/20 text-lime-300 rounded text-xs border border-lime-400/30"
                   >
                     {tag}
                   </span>
@@ -88,9 +88,9 @@ export default function CodeSnippetsSection() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="mb-4 p-4 bg-purple-900/20 rounded border border-purple-500/30"
+                  className="mb-4 p-4 glass-lime rounded"
                 >
-                  <h4 className="text-sm font-semibold text-purple-300 mb-2">Explanation:</h4>
+                  <h4 className="text-sm font-semibold text-lime-400 mb-2">Explanation:</h4>
                   <p className="text-gray-300 text-sm">{snippet.explanation}</p>
                 </motion.div>
               )}

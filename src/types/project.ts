@@ -6,7 +6,7 @@ export interface Project {
   github: string;
   demo: string;
   stars: number;
-  image: string;
+  icon: string;
   duration: string;
   responsibilities?: string[];
   features?: string[];

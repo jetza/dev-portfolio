@@ -49,7 +49,7 @@ export default function ContactSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
-        <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-2">
+        <h2 className="text-3xl font-bold text-transparent bg-clip-text mb-2" style={{backgroundImage: 'linear-gradient(to right, #ffffff, #a3e635, #ffffff)'}}>
           {contactData.title}
         </h2>
         <p className="text-gray-400 mb-6">
@@ -78,7 +78,7 @@ export default function ContactSection() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full pl-11 pr-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+                  className="w-full pl-11 pr-4 py-3 glass border border-gray-600 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all"
                   placeholder="Your name"
                 />
               </div>
@@ -97,7 +97,7 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full pl-11 pr-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+                  className="w-full pl-11 pr-4 py-3 glass border border-gray-600 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -116,7 +116,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full pl-11 pr-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all resize-none"
+                  className="w-full pl-11 pr-4 py-3 glass border border-gray-600 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all resize-none"
                   placeholder="Tell me about your project..."
                 />
               </div>
@@ -127,11 +127,11 @@ export default function ContactSection() {
               disabled={isSubmitting || isSubmitted}
               whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
               whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-              className={`w-full py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all ${
+              className={`w-full py-3 px-6 rounded-full font-bold flex items-center justify-center gap-2 transition-all ${
                 isSubmitted
-                  ? 'bg-green-600 hover:bg-green-700'
-                  : 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700'
-              } text-white disabled:opacity-50 disabled:cursor-not-allowed`}
+                  ? 'bg-green-500 hover:bg-green-600'
+                  : 'bg-lime-400 hover:bg-lime-300 text-black hover:shadow-[0_0_30px_rgba(163,230,53,0.5)]'
+              } disabled:opacity-50 disabled:cursor-not-allowed`}
             >
               {isSubmitting ? (
                 <>
@@ -160,26 +160,26 @@ export default function ContactSection() {
           transition={{ delay: 0.4 }}
           className="space-y-6"
         >
-          <div className="bg-gray-700/30 p-6 rounded-lg border border-gray-600">
-            <h3 className="text-xl font-semibold text-purple-300 mb-4">Contact Information</h3>
+          <div className="glass p-6 rounded-lg">
+            <h3 className="text-xl font-semibold text-lime-400 mb-4">Contact Information</h3>
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-gray-300">
-                <Mail className="w-5 h-5 text-purple-400" />
-                <a href={`mailto:${contactData.email}`} className="hover:text-purple-400 transition-colors">{contactData.email}</a>
+                <Mail className="w-5 h-5 text-lime-400" />
+                <a href={`mailto:${contactData.email}`} className="hover:text-lime-400 transition-colors">{contactData.email}</a>
               </div>
               <div className="flex items-center gap-3 text-gray-300">
-                <MapPin className="w-5 h-5 text-purple-400" />
+                <MapPin className="w-5 h-5 text-lime-400" />
                 <span>{contactData.location}</span>
               </div>
               <div className="flex items-center gap-3 text-gray-300">
-                <Phone className="w-5 h-5 text-purple-400" />
+                <Phone className="w-5 h-5 text-lime-400" />
                 <span>{contactData.phone}</span>
               </div>
             </div>
           </div>
 
-          <div className="bg-gray-700/30 p-6 rounded-lg border border-gray-600">
-            <h3 className="text-xl font-semibold text-purple-300 mb-4">Connect With Me</h3>
+          <div className="glass p-6 rounded-lg">
+            <h3 className="text-xl font-semibold text-lime-400 mb-4">Connect With Me</h3>
             <div className="flex gap-4">
               {contactData.socialLinks.map((link) => {
                 const Icon = iconMap[link.icon as keyof typeof iconMap];
@@ -199,8 +199,8 @@ export default function ContactSection() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 p-6 rounded-lg border border-purple-500/30">
-            <h3 className="text-lg font-semibold text-purple-300 mb-2">{contactData.closingMessage.title}</h3>
+          <div className="glass-lime p-6 rounded-lg">
+            <h3 className="text-lg font-semibold text-lime-400 mb-2">{contactData.closingMessage.title}</h3>
             <p className="text-gray-300 text-sm">
               {contactData.closingMessage.description}
             </p>

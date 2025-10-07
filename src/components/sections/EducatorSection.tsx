@@ -11,7 +11,7 @@ export default function EducatorSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
-        <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-2">
+        <h2 className="text-3xl font-bold text-transparent bg-clip-text mb-2" style={{backgroundImage: 'linear-gradient(to right, #ffffff, #a3e635, #ffffff)'}}>
           {experienceContent.educator.title}
         </h2>
         <p className="text-gray-400 mb-6">{experienceContent.educator.description}</p>
@@ -21,19 +21,21 @@ export default function EducatorSection() {
         {educatorExperience.map((exp, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.1 }}
-            className="bg-gray-700/30 p-6 rounded-lg border border-gray-600 hover:border-purple-500 transition-all duration-300 card-hover"
+            initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
+            animate={index < 2 ? { opacity: 1, clipPath: 'inset(0 0% 0 0)' } : undefined}
+            whileInView={index >= 2 ? { opacity: 1, clipPath: 'inset(0 0% 0 0)' } : undefined}
+            viewport={index >= 2 ? { once: true, margin: '0px 0px -200px 0px' } : undefined}
+            transition={{ delay: index < 2 ? index * 0.3 : 0, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+            className="glass p-6 rounded-lg hover:border-lime-400/50 transition-all duration-300 card-hover"
           >
             <div className="flex items-start justify-between mb-3">
               <div className="flex-1">
-                <h3 className="text-xl font-semibold text-purple-300 mb-1">{exp.title}</h3>
+                                <h3 className="text-xl font-semibold text-lime-400">{exp.title}</h3>
                 {exp.company && (
                   <p className="text-lg text-gray-300 mb-2">{exp.company}</p>
                 )}
               </div>
-              <GraduationCap className="w-8 h-8 text-purple-400 flex-shrink-0 ml-4" />
+              <GraduationCap className="w-8 h-8 text-lime-400 flex-shrink-0 ml-4" />
             </div>
 
             <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-400">
@@ -50,18 +52,64 @@ export default function EducatorSection() {
             <ul className="space-y-2 mb-4">
               {exp.description.map((item, i) => (
                 <li key={i} className="flex items-start text-gray-300">
-                  <span className="text-purple-400 mr-2">•</span>
+                  <span className="text-lime-400 mr-2">•</span>
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
+
+            {exp.techStack && (
+              <div className="mb-4 pb-4 border-b border-gray-700">
+                <p className="text-xs font-semibold text-lime-400 mb-3">Technologies:</p>
+                <div className="flex flex-wrap gap-2">
+                  {exp.techStack.split(',').map((tech, techIndex) => {
+                    const gradients = [
+                      ['#a3e635', '#84cc16'], // lime to lime-500
+                      ['#ffffff', '#d1d5db'], // white to gray-300
+                      ['#84cc16', '#65a30d'], // lime-500 to lime-600
+                      ['#d1d5db', '#9ca3af'], // gray-300 to gray-400
+                      ['#a3e635', '#ffffff'], // lime to white
+                      ['#65a30d', '#a3e635'], // lime-600 to lime
+                    ];
+                    const [color1, color2] = gradients[techIndex % gradients.length];
+                    
+                    return (
+                      <motion.span
+                        key={techIndex}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ 
+                          delay: 0.7 + techIndex * 0.2,
+                          duration: 0.5,
+                          ease: 'easeOut'
+                        }}
+                        whileHover={{ 
+                          scale: 1.08, 
+                          y: -3,
+                          transition: { duration: 0.2, ease: 'easeOut' }
+                        }}
+                        className="inline-block p-[1px] rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-default"
+                        style={{
+                          background: `linear-gradient(to right, ${color1}, ${color2})`,
+                        }}
+                      >
+                        <span className="block px-3 py-1 bg-gray-900 rounded-lg text-white text-xs font-medium">
+                          {tech.trim()}
+                        </span>
+                      </motion.span>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
             {exp.link && (
               <a
                 href={exp.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-purple-400 hover:text-purple-300 text-sm transition-colors duration-200 group"
+                className="inline-flex items-center text-lime-400 hover:text-lime-300 text-sm transition-colors duration-200 group"
               >
                 <ExternalLink className="w-4 h-4 mr-2 group-hover:translate-x-0.5 transition-transform" />
                 <span className="underline underline-offset-2">Visit Website</span>

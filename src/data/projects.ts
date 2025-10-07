@@ -2,26 +2,23 @@ import { Project } from '@/types/project';
 
 export const projects: Project[] = [
   {
-    title: 'Next.js Betting Platform',
-    description: 'Enterprise betting application with multi-game support (Poker, Soccer, Lotto, Casino), OCR, face recognition, and online transactions.',
-    fullDescription: 'A comprehensive enterprise-level betting platform built with Next.js and React. The application supports multiple gaming categories including Poker, Soccer betting, Lotto, and Casino games. Features advanced user verification through OCR and face recognition technologies, secure online transactions, and a robust content management system.',
+    title: 'Next.js Application',
+    description: 'Enterprise entertainment application with multi-game support, OCR, face recognition, and secure online transactions.',
+    fullDescription: 'A comprehensive enterprise-level entertainment platform built with Next.js and React. The application supports multiple gaming categories including Poker, Sports games, Lottery, and Casino entertainment. Features advanced user verification through OCR and face recognition technologies, secure online transactions, and a robust content management system.',
     tags: ['Next.js', 'React', 'Zustand', 'Identity Server', 'OCR'],
     github: 'https://github.com/jelenamiodragovic',
     demo: '#',
     stars: 28,
-    image: '🎰',
+    icon: 'Gamepad2',
     duration: 'May 2024 - Nov 2024',
     responsibilities: [
-      'Implemented new features and improvements for existing functionality',
-      'Created custom components instead of relying on third-party libraries',
-      'Integrated InCode, OCR, and face recognition platforms',
-      'Implemented design specifications from InVision',
-      'Conducted testing and bug fixing in collaboration with QA team',
-      'Added content and translations through customized tools',
-      'Daily work management using Jira'
+      'Migrated legacy platform to a modern Next.js/React (TypeScript) stack',
+      'Built and optimized custom components with minimal external libraries',
+      'Integrated InCode OCR & Face Recognition platform for identity verification',
+      'Implemented multilingual support with custom translation tools',
     ],
     features: [
-      'Multi-game betting system (Poker, Soccer, Lotto, Casino)',
+      'Multi-category gaming system',
       'Account creation and editing with full user management',
       'OCR and face recognition for identity verification',
       'Secure online transaction processing',
@@ -38,14 +35,12 @@ export const projects: Project[] = [
     github: 'https://github.com/jelenamiodragovic',
     demo: '#',
     stars: 25,
-    image: '📱',
+    icon: 'Smartphone',
     duration: 'Aug 2023 - Apr 2024',
     responsibilities: [
-      'Implemented new features and suggested improvements',
-      'Created custom components for missing native elements',
-      'Implemented designs from Figma and created new UI elements using Affinity Designer',
-      'Self-initiated testing and bug fixing, collaborated with QA team',
-      'Managed daily tasks through Jira'
+      'Developed features for a mini social network: friend requests, location-based search, chat, and meeting scheduling',
+      'Created new UI components aligned with Figma designs and optimized for Android/iOS',
+      'Worked closely with backend developer to sync environment and APIs',
     ],
     features: [
       'Friend request system with user discovery',
@@ -65,7 +60,7 @@ export const projects: Project[] = [
     github: 'https://github.com/jetza/Generative-AI-Services-Demo',
     demo: 'https://github.com/jetza/Generative-AI-Services-Demo',
     stars: 22,
-    image: '🤖',
+    icon: 'Bot',
     duration: '1 month',
     responsibilities: [
       'Integrated multiple AI services (OpenAI, D-ID, API Ninjas)',
@@ -92,15 +87,12 @@ export const projects: Project[] = [
     github: 'https://github.com/jelenamiodragovic',
     demo: '#',
     stars: 20,
-    image: '💬',
+    icon: 'MessageSquare',
     duration: '8 months',
     responsibilities: [
-      'Development of new and maintenance of existing functionalities on frontend and backend',
-      'Manual testing, finding/reporting and fixing bugs',
-      'Write maintainable and extensible code in team environment',
-      'Maintain source code using version control',
-      'Writing documentation',
-      'Code review'
+      'Designed reusable React components and backend APIs for Q&A, voting, and tagging',
+      'Implemented authentication/authorization and role-based access control',
+      'Wrote unit tests and maintained technical documentation',
     ],
     features: [
       'Q&A platform for technical questions',
@@ -110,7 +102,7 @@ export const projects: Project[] = [
       'Voting system for answers',
       'Tag-based categorization'
     ],
-    teamSize: 'Medium team (5-10 members)'
+    teamSize: 'Big team (5-10 members)'
   },
   {
     title: 'Vehicle Technical Info Portal',
@@ -120,15 +112,12 @@ export const projects: Project[] = [
     github: 'https://github.com/jelenamiodragovic',
     demo: '#',
     stars: 18,
-    image: '🚗',
+    icon: 'Car',
     duration: 'Jun 2022 - May 2023',
     responsibilities: [
-      'Implementing new features and improvement of existing features',
-      'Creating new components',
-      'Manual testing, finding/reporting and fixing bugs on frontend',
-      'Implementing design using graphic tools',
-      'Maintain source code using version control',
-      'Daily communication with backend team and QA'
+      'Built React components for car/motorcycle technical service data',
+      'Integrated APIs for real-time vehicle information retrieval',
+      'Collaborated with QA team on feature testing and fixes',
     ],
     features: [
       'Vehicle technical specifications database',
@@ -148,16 +137,13 @@ export const projects: Project[] = [
     github: 'https://github.com/jelenamiodragovic',
     demo: '#',
     stars: 16,
-    image: '💡',
+    icon: 'Lightbulb',
     duration: '15 months',
     responsibilities: [
-      'Implementing new features and improvement of existing features',
-      'Maintain source code using version control',
-      'Implementing design and making new UI elements using graphic tools',
-      'Unit testing and manual testing on Android/iOS',
-      'Optimizing Bluetooth communication',
-      'Publish/Update Apps on Google Store/App Store',
-      'Working with RaspberryPi for device simulation'
+      'Developed a Xamarin-based smart lighting mobile app with Bluetooth LE and Azure IoT',
+      'Implemented IoT device provisioning and RaspberryPi simulation',
+      'Designed and optimized UI for multiple devices',
+      'Published apps to the App Store and Google Play',
     ],
     features: [
       'Bluetooth LE device pairing and control',
@@ -168,7 +154,7 @@ export const projects: Project[] = [
       'Multi-device support',
       'Real-time status updates'
     ],
-    teamSize: 'Small team (3-5 members)'
+    teamSize: 'Big team (8-12 members)'
   },
   {
     title: 'User Management System',
@@ -178,7 +164,7 @@ export const projects: Project[] = [
     github: 'https://github.com/jetza/User-Management-System',
     demo: 'https://github.com/jetza/User-Management-System',
     stars: 14,
-    image: '👥',
+    icon: 'Users',
     duration: '2 months',
     responsibilities: [
       'Full-stack development (Frontend and Backend)',
@@ -205,7 +191,7 @@ export const projects: Project[] = [
     github: 'https://github.com/jelenamiodragovic',
     demo: '#',
     stars: 12,
-    image: '🎤',
+    icon: 'Presentation',
     duration: 'Jul 2022 - Sep 2022',
     responsibilities: [
       'Implementing new features and improvements',
@@ -232,13 +218,12 @@ export const projects: Project[] = [
     github: 'https://github.com/jelenamiodragovic',
     demo: '#',
     stars: 15,
-    image: '📊',
+    icon: 'BarChart3',
     duration: '4 months',
     responsibilities: [
-      'Implementing new features and improvements',
-      'Maintain source code using version control',
-      'Implementing design using graphic tools',
-      'Manual testing, finding/reporting and fixing bugs on frontend'
+      'Built a Single Page Application for project estimations using Angular and microservices',
+      'Implemented inter-service communication with RabbitMQ',
+      'Ensured system scalability and performance monitoring',
     ],
     features: [
       'Top-down and bottom-up estimation',
@@ -259,15 +244,12 @@ export const projects: Project[] = [
     github: 'https://github.com/jelenamiodragovic',
     demo: '#',
     stars: 10,
-    image: '⚙️',
+    icon: 'Settings',
     duration: '3 months',
     responsibilities: [
-      'Daily communication with team and clients',
-      'Finding innovative solutions to customer issues',
-      'Develop plugins for D365 platform',
-      'Customization of default templates on D365',
-      'Monitoring client applications and providing advice',
-      'Performance optimization and data quality improvement'
+      'Customized plugins and templates for enterprise Dynamics 365 clients',
+      'Optimized performance of workflows and business logic',
+      'Delivered feature enhancements and bug fixes in client environments',
     ],
     features: [
       'Custom plugin development',
@@ -277,6 +259,6 @@ export const projects: Project[] = [
       'PowerApps customization',
       'Dataverse configuration'
     ],
-    teamSize: 'Small team (2-4 members)'
+    teamSize: 'Big team (5-10 members)'
   }
 ];

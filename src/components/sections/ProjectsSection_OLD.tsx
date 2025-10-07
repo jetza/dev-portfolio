@@ -45,17 +45,17 @@ export default function ProjectsSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text mb-4" 
+          <h2 className="text-3xl font-bold text-transparent bg-clip-text mb-2" 
             style={{backgroundImage: 'linear-gradient(to right, #ffffff, #a3e635, #ffffff)'}}>
-            Featured Projects
+            Projects
           </h2>
-          <p className="text-gray-300 mb-8 text-lg">
-            Explore my professional portfolio showcasing innovative solutions across different domains.
+          <p className="text-gray-400 mb-6">
+            Here are some of the professional projects I have worked on throughout my career. Each project showcases different technologies and problem-solving approaches.
           </p>
         </motion.div>
 
         {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[280px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-fr">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
