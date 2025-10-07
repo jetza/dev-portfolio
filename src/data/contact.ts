@@ -1,8 +1,8 @@
 export const contactData = {
   title: 'Get In Touch',
   subtitle: 'Have a project in mind or want to collaborate? Feel free to reach out!',
-  email: 'jmiodragovic.dev@gmail.com',
-  phone: '+381 62 428 700',
+  email: 'jelena-miodragovic@live.com',
+  phone: '+387 65 271 124',
   location: 'Belgrade, Serbia',
   socialLinks: [
     {
@@ -14,7 +14,7 @@ export const contactData = {
     },
     {
       name: 'GitHub',
-      url: 'https://github.com/jelenamiodragovic',
+      url: 'https://github.com/jetzaperetza',
       icon: 'Github',
       gradient: 'from-gray-700 to-gray-800',
       shadowColor: 'gray-500/50'
