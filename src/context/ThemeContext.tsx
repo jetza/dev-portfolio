@@ -1,18 +1,41 @@
 'use client';
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 type ThemeMode = 'cyber' | 'minimal';
 interface ThemeContextType {
   theme: ThemeMode;
   toggleTheme: () => void;
+  isMobile: boolean;
 }
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<ThemeMode>('cyber');
+  const [isMobile, setIsMobile] = useState(false);
+  const [theme, setTheme] = useState<ThemeMode>('minimal');
+
+  useEffect(() => {
+    // Check if screen is mobile
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 1024; // lg breakpoint
+      setIsMobile(mobile);
+      // Force cyber theme on mobile
+      if (mobile) {
+        setTheme('cyber');
+      }
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const toggleTheme = () => {
-    setTheme(prev => prev === 'cyber' ? 'minimal' : 'cyber');
+    // Only allow theme toggle on desktop
+    if (!isMobile) {
+      setTheme(prev => prev === 'cyber' ? 'minimal' : 'cyber');
+    }
   };
+
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, isMobile }}>
       {children}
     </ThemeContext.Provider>
   );

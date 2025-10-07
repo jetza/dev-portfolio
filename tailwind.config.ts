@@ -13,6 +13,7 @@ const config: Config = {
         foreground: "var(--foreground)",
         magenta: {
           DEFAULT: '#a80077',
+          400: '#d946ef',
           500: '#a80077',
           600: '#8a0062',
         },

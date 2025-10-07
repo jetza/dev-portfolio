@@ -81,7 +81,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto"
           >
-            Full Stack Developer | Educator | Microsoft MVP
+            <span className="text-magenta-500">Full Stack Developer</span> | Educator | Microsoft MVP
           </motion.p>
           {}
           <motion.div

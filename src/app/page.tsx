@@ -28,25 +28,25 @@ export default function Home() {
           <ThemePreview />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            {}
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-3"
-            >
-              <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
-            </motion.div>
+              {}
+              <motion.div
+                initial={{ opacity: 0, x: -100 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="lg:col-span-3"
+              >
+                <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
+              </motion.div>
 
-            {}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className={isGameOpen ? 'lg:col-span-5' : 'lg:col-span-9'}
-            >
-              <MainContent activeSection={activeSection} isGameOpen={isGameOpen} />
-            </motion.div>
+              {}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className={isGameOpen ? 'lg:col-span-5' : 'lg:col-span-9'}
+              >
+                <MainContent activeSection={activeSection} isGameOpen={isGameOpen} />
+              </motion.div>
 
             {}
             {isGameOpen && (
@@ -64,7 +64,7 @@ export default function Home() {
         )}
 
         {}
-        {!isGameOpen && (
+        {!isGameOpen && theme !== 'minimal' && (
           <motion.button
             initial={{ scale: 0 }}
             animate={{ 

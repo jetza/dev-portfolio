@@ -102,40 +102,40 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
   }, [moveSnake, isPlaying]);
   return (
     <motion.div
-      className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 h-fit sticky top-8"
+      className="bg-black/90 backdrop-blur-sm rounded-lg p-6 border border-lime-400/30 h-fit sticky top-8"
     >
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-xl font-bold text-lime-400">Snake Game</h3>
         <button
           onClick={() => setIsGameOpen(false)}
-          className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+          className="p-3 hover:bg-magenta-500/30 rounded-lg transition-all border-2 border-magenta-500/50 hover:border-magenta-400 shadow-lg shadow-magenta-500/20 hover:shadow-xl hover:shadow-magenta-500/40 hover:scale-110"
         >
-          <X className="w-5 h-5 text-gray-400" />
+          <X className="w-6 h-6 text-magenta-400" />
         </button>
       </div>
       <div className="space-y-4">
         {}
         <div className="flex justify-between items-center">
           <div className="text-center">
-            <p className="text-sm text-gray-400">Score</p>
+            <p className="text-sm text-cyan-400/70">Score</p>
             <p className="text-2xl font-bold text-lime-400">{score}</p>
           </div>
           <div className="text-center">
-            <p className="text-sm text-gray-400 flex items-center gap-1">
-              <Trophy className="w-4 h-4" />
+            <p className="text-sm text-cyan-400/70 flex items-center gap-1">
+              <Trophy className="w-4 h-4 text-magenta-400" />
               High Score
             </p>
-            <p className="text-2xl font-bold text-lime-400">{highScore}</p>
+            <p className="text-2xl font-bold text-magenta-400">{highScore}</p>
           </div>
         </div>
         {}
-        <div className="relative bg-gray-900 rounded-lg p-2 border border-gray-700">
+        <div className="relative bg-black rounded-lg p-2 border border-lime-400/30">
           <div
             className="relative mx-auto"
             style={{
               width: GRID_SIZE * CELL_SIZE,
               height: GRID_SIZE * CELL_SIZE,
-              background: 'repeating-linear-gradient(0deg, #1f2937 0px, #1f2937 1px, transparent 1px, transparent 15px), repeating-linear-gradient(90deg, #1f2937 0px, #1f2937 1px, transparent 1px, transparent 15px)',
+              background: 'repeating-linear-gradient(0deg, rgba(163, 230, 53, 0.1) 0px, rgba(163, 230, 53, 0.1) 1px, transparent 1px, transparent 15px), repeating-linear-gradient(90deg, rgba(163, 230, 53, 0.1) 0px, rgba(163, 230, 53, 0.1) 1px, transparent 1px, transparent 15px)',
             }}
           >
             {}
@@ -143,7 +143,7 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
               <div
                 key={index}
                 className={`absolute rounded-sm ${
-                  index === 0 ? 'bg-gradient-to-br from-lime-400 to-lime-500' : 'bg-lime-500'
+                  index === 0 ? 'bg-gradient-to-br from-lime-400 to-cyan-400 shadow-lg shadow-lime-400/50' : 'bg-lime-400'
                 }`}
                 style={{
                   left: segment.x * CELL_SIZE,
@@ -155,30 +155,30 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
             ))}
             {}
             <div
-              className="absolute bg-gradient-to-br from-lime-400 to-green-500 rounded-full animate-pulse"
+              className="absolute bg-gradient-to-br from-magenta-500 to-lime-400 rounded-full animate-pulse"
               style={{
                 left: food.x * CELL_SIZE,
                 top: food.y * CELL_SIZE,
                 width: CELL_SIZE - 2,
                 height: CELL_SIZE - 2,
-                boxShadow: '0 0 10px rgba(163, 230, 53, 0.6)'
+                boxShadow: '0 0 15px rgba(217, 70, 239, 0.8)'
               }}
             />
             {}
             {gameOver && (
-              <div className="absolute inset-0 bg-gray-900/90 flex items-center justify-center">
-                <div className="text-center">
-                  <p className="text-2xl font-bold text-lime-400 mb-2">Game Over!</p>
-                  <p className="text-gray-400 mb-4">Score: {score}</p>
+              <div className="absolute inset-0 bg-black/90 flex items-center justify-center backdrop-blur-sm">
+                <div className="text-center border border-magenta-500/50 bg-black/50 p-6 rounded-lg">
+                  <p className="text-2xl font-bold text-magenta-400 mb-2">Game Over!</p>
+                  <p className="text-cyan-400 mb-4">Score: {score}</p>
                 </div>
               </div>
             )}
             {}
             {!isPlaying && !gameOver && (
-              <div className="absolute inset-0 bg-gray-900/90 flex items-center justify-center">
-                <div className="text-center">
+              <div className="absolute inset-0 bg-black/90 flex items-center justify-center backdrop-blur-sm">
+                <div className="text-center border border-lime-400/50 bg-black/50 p-6 rounded-lg">
                   <p className="text-xl font-bold text-lime-400 mb-2">Ready to Play?</p>
-                  <p className="text-sm text-gray-400">Use arrow keys to move</p>
+                  <p className="text-sm text-cyan-400/70">Use arrow keys to move</p>
                 </div>
               </div>
             )}
@@ -189,11 +189,11 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
           {!isPlaying ? (
             <button
               onClick={resetGame}
-              className="w-full py-3 bg-gradient-to-r from-lime-500 to-green-500 hover:from-lime-600 hover:to-green-600 text-black font-bold rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-lime-400/50"
+              className="w-full py-4 bg-gradient-to-r from-lime-400 to-cyan-400 hover:from-lime-500 hover:to-cyan-500 text-black font-black text-lg rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-lime-400/30 hover:shadow-xl hover:shadow-lime-400/40 hover:scale-105"
             >
               {gameOver ? (
                 <>
-                  <RotateCcw className="w-5 h-5" />
+                  <RotateCcw className="w-6 h-6" />
                   Play Again
                 </>
               ) : (
@@ -206,7 +206,7 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
                 setIsPlaying(false);
                 setGameOver(true);
               }}
-              className="w-full py-3 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded-lg transition-all"
+              className="w-full py-4 bg-magenta-500/30 hover:bg-magenta-500/40 text-magenta-400 border-2 border-magenta-500/70 hover:border-magenta-400 font-black text-lg rounded-lg transition-all shadow-xl shadow-magenta-500/30 hover:shadow-2xl hover:shadow-magenta-500/50 hover:scale-105"
             >
               Pause
             </button>
@@ -216,7 +216,7 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
             <div></div>
             <button
               onClick={() => direction !== 'DOWN' && setDirection('UP')}
-              className="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
+              className="p-4 bg-lime-400/20 hover:bg-lime-400/30 border-2 border-lime-400/50 hover:border-lime-400 text-lime-400 font-bold text-xl rounded-lg transition-all shadow-lg shadow-lime-400/20 disabled:opacity-30 disabled:shadow-none"
               disabled={!isPlaying}
             >
               ↑
@@ -224,28 +224,28 @@ export default function GameSection({ setIsGameOpen }: GameSectionProps) {
             <div></div>
             <button
               onClick={() => direction !== 'RIGHT' && setDirection('LEFT')}
-              className="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
+              className="p-4 bg-cyan-400/20 hover:bg-cyan-400/30 border-2 border-cyan-400/50 hover:border-cyan-400 text-cyan-400 font-bold text-xl rounded-lg transition-all shadow-lg shadow-cyan-400/20 disabled:opacity-30 disabled:shadow-none"
               disabled={!isPlaying}
             >
               ←
             </button>
             <button
               onClick={() => direction !== 'UP' && setDirection('DOWN')}
-              className="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
+              className="p-4 bg-lime-400/20 hover:bg-lime-400/30 border-2 border-lime-400/50 hover:border-lime-400 text-lime-400 font-bold text-xl rounded-lg transition-all shadow-lg shadow-lime-400/20 disabled:opacity-30 disabled:shadow-none"
               disabled={!isPlaying}
             >
               ↓
             </button>
             <button
               onClick={() => direction !== 'LEFT' && setDirection('RIGHT')}
-              className="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
+              className="p-4 bg-cyan-400/20 hover:bg-cyan-400/30 border-2 border-cyan-400/50 hover:border-cyan-400 text-cyan-400 font-bold text-xl rounded-lg transition-all shadow-lg shadow-cyan-400/20 disabled:opacity-30 disabled:shadow-none"
               disabled={!isPlaying}
             >
               →
             </button>
           </div>
         </div>
-        <p className="text-xs text-gray-500 text-center">
+        <p className="text-xs text-cyan-400/50 text-center">
           Use arrow keys or buttons to control the snake
         </p>
       </div>

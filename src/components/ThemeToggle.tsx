@@ -3,8 +3,14 @@ import { motion } from 'framer-motion';
 import { useTheme } from '@/context/ThemeContext';
 import { Zap, LayoutGrid } from 'lucide-react';
 export default function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, isMobile } = useTheme();
   const isCyber = theme === 'cyber';
+
+  // Hide toggle on mobile (cyber theme is forced)
+  if (isMobile) {
+    return null;
+  }
+
   return (
     <motion.button
       initial={{ opacity: 0, scale: 0 }}
