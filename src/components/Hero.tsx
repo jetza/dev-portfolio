@@ -15,7 +15,7 @@ export default function Hero({ onNavigate }: HeroProps) {
     onNavigate?.('contact');
   };
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden px-4">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden px-4">
       {}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(163,230,53,0.1),transparent_50%)]" />

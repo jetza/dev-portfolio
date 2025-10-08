@@ -9,23 +9,19 @@
   
   body {
     @apply antialiased bg-black text-white;
-    cursor: none; /* Sakrij default kursor */
+    cursor: none;
   }
 
-  /* Custom variable font support */
   @supports (font-variation-settings: normal) {
     body {
       font-family: 'Inter Variable', system-ui, sans-serif;
     }
   }
 
-  /* Custom cyber cursor */
   * {
     cursor: none !important;
   }
 }
-
-/* Glassmorphism utility classes */
 .glass {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
@@ -116,7 +112,6 @@
   }
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -151,7 +146,6 @@
   box-shadow: 0 0 8px rgba(163, 230, 53, 0.6);
 }
 
-/* Glitch animacije za kartice */
 @keyframes glitch-1 {
   0%, 100% {
     transform: translate(0, 0);

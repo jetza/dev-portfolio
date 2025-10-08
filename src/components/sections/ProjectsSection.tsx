@@ -27,12 +27,12 @@ export default function ProjectsSection({ isGameOpen = false }: ProjectsSectionP
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const getGridClasses = (index: number) => {
     const patterns = [
-      'md:col-span-2', // Wide
-      'md:col-span-1', // Normal
-      'md:col-span-1', // Normal
-      'md:col-span-2 md:row-span-2', // Large featured
-      'md:col-span-1', // Normal
-      'md:col-span-1', // Normal
+      'md:col-span-2',
+      'md:col-span-1',
+      'md:col-span-1',
+      'md:col-span-2 md:row-span-2',
+      'md:col-span-1',
+      'md:col-span-1',
     ];
     return patterns[index % patterns.length];
   };

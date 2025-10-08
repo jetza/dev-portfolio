@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { Code2, BookOpen, Award, Briefcase, GraduationCap, Heart, Terminal, User, Mail, X, ExternalLink, Calendar, MapPin, Building, Gamepad2, QrCode } from 'lucide-react';
+import { Code2, BookOpen, Award, Briefcase, GraduationCap, Heart, Terminal, User, Mail, X, ExternalLink, Calendar, MapPin, Building, Gamepad2, QrCode, Send, CheckCircle, MessageSquare } from 'lucide-react';
 import { hobbies, hobbiesContent } from '@/data/hobbies';
 import GameSection from '@/components/GameSection';
 import { projects } from '@/data/projects';
@@ -19,12 +19,26 @@ export default function ThemePreview() {
   const [cardPosition, setCardPosition] = useState<{ x: number; y: number } | null>(null);
   const [isGameOpen, setIsGameOpen] = useState(false);
   const [showQRModal, setShowQRModal] = useState(false);
+  
+  const [contactForm, setContactForm] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [isSubmittingContact, setIsSubmittingContact] = useState(false);
+  const [isContactSubmitted, setIsContactSubmitted] = useState(false);
+  const [contactError, setContactError] = useState('');
 
   useEffect(() => {
     if (selectedCard !== null || isGameOpen || showQRModal) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
+      if (selectedCard === null) {
+        setContactForm({ name: '', email: '', message: '' });
+        setContactError('');
+        setIsContactSubmitted(false);
+      }
     }
     return () => {
       document.body.style.overflow = '';
@@ -40,6 +54,46 @@ export default function ThemePreview() {
     window.addEventListener('keydown', handleEscape);
     return () => window.removeEventListener('keydown', handleEscape);
   }, [showQRModal]);
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmittingContact(true);
+    setContactError('');
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contactForm),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      setIsContactSubmitted(true);
+      setTimeout(() => {
+        setIsContactSubmitted(false);
+        setContactForm({ name: '', email: '', message: '' });
+      }, 3000);
+    } catch (err) {
+      setContactError(err instanceof Error ? err.message : 'Failed to send message');
+    } finally {
+      setIsSubmittingContact(false);
+    }
+  };
+
+  const handleContactChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setContactForm(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   const demoCards = [
     { 
       id: 1, 
@@ -183,10 +237,8 @@ export default function ThemePreview() {
                     return;
                   }
                   
-                  // Check if click came from QR wrapper or its children
                   const target = e.target as HTMLElement;
                   if (target.closest('[data-qr-wrapper="true"]')) {
-                    // Don't open card modal if QR code area was clicked
                     return;
                   }
                   
@@ -1073,7 +1125,7 @@ export default function ThemePreview() {
                   </div>
                   <div className="flex-1 overflow-y-auto p-6 space-y-6">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-lime rounded-xl p-6 border-2 border-lime-400/30"><h3 className="text-2xl font-black text-lime-400 mb-4">{aboutData.name}</h3><div className="space-y-3 text-gray-300">{aboutData.introduction.map((para, idx) => (<p key={idx} className="leading-relaxed">{para}</p>))}</div></motion.div>
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="glass-lime rounded-xl p-6 border-2 border-lime-400/30"><h3 className="text-xl font-black text-lime-400 mb-4">Contact Info</h3><div className="space-y-2 text-gray-300"><p><span className="text-lime-400">📧 Email:</span> {aboutData.email}</p><p><span className="text-lime-400">📱 Phone:</span> {aboutData.phone}</p><p><span className="text-lime-400">📍 Location:</span> {aboutData.location}</p></div></motion.div>
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="glass-lime rounded-xl p-6 border-2 border-lime-400/30"><h3 className="text-xl font-black text-lime-400 mb-4">Contact Info</h3><div className="space-y-3 text-gray-300"><p className="flex items-center gap-2"><Mail className="w-5 h-5 text-lime-400" /><span>{aboutData.email}</span></p><p className="flex items-center gap-2"><svg className="w-5 h-5 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg><span>{aboutData.phone}</span></p><p className="flex items-center gap-2"><MapPin className="w-5 h-5 text-lime-400" /><span>{aboutData.location}</span></p></div></motion.div>
                   </div>
                 </div>
               </motion.div>
@@ -1141,9 +1193,45 @@ export default function ThemePreview() {
                       <motion.button whileHover={{ scale: 1.1, rotate: 90 }} whileTap={{ scale: 0.9 }} onClick={() => setSelectedCard(null)} className="text-gray-400 hover:text-lime-400 transition-colors p-2 hover:bg-lime-400/10 rounded-lg"><X className="w-6 h-6" /></motion.button>
                     </div>
                   </div>
-                  <div className="flex-1 overflow-y-auto p-6 space-y-6">
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-lime rounded-xl p-6 border-2 border-lime-400/30"><h3 className="text-xl font-black text-lime-400 mb-4">Contact Information</h3><div className="space-y-3 text-gray-300"><p className="flex items-center gap-2"><Mail className="w-5 h-5 text-lime-400" /><a href={`mailto:${contactData.email}`} className="hover:text-lime-400 transition-colors">{contactData.email}</a></p><p className="flex items-center gap-2"><span className="text-lime-400">📱</span>{contactData.phone}</p><p className="flex items-center gap-2"><MapPin className="w-5 h-5 text-lime-400" />{contactData.location}</p></div></motion.div>
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="glass-lime rounded-xl p-6 border-2 border-lime-400/30"><h3 className="text-xl font-black text-lime-400 mb-4">Social Links</h3><div className="space-y-3">{contactData.socialLinks.map((link, idx) => (<motion.a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 * idx }} className="flex items-center gap-3 p-3 rounded-lg bg-lime-400/10 hover:bg-lime-400/20 border border-lime-400/30 hover:border-lime-400/50 transition-all group"><ExternalLink className="w-5 h-5 text-lime-400 group-hover:text-magenta-400 transition-colors" /><span className="text-gray-300 group-hover:text-lime-400 transition-colors font-bold">{link.name}</span></motion.a>))}</div></motion.div>
+                  <div className="flex-1 overflow-y-auto p-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="glass-lime rounded-xl p-6 border-2 border-lime-400/30">
+                        <h3 className="text-xl font-black text-lime-400 mb-4">Send Message</h3>
+                        <form onSubmit={handleContactSubmit} className="space-y-4">
+                          <div>
+                            <label htmlFor="contact-name" className="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                            <div className="relative">
+                              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                              <input type="text" id="contact-name" name="name" value={contactForm.name} onChange={handleContactChange} required className="w-full pl-11 pr-4 py-3 bg-black/50 border border-lime-400/30 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all" placeholder="Your name" />
+                            </div>
+                          </div>
+                          <div>
+                            <label htmlFor="contact-email" className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                            <div className="relative">
+                              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                              <input type="email" id="contact-email" name="email" value={contactForm.email} onChange={handleContactChange} required className="w-full pl-11 pr-4 py-3 bg-black/50 border border-lime-400/30 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all" placeholder="your.email@example.com" />
+                            </div>
+                          </div>
+                          <div>
+                            <label htmlFor="contact-message" className="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                            <div className="relative">
+                              <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                              <textarea id="contact-message" name="message" value={contactForm.message} onChange={handleContactChange} required rows={5} className="w-full pl-11 pr-4 py-3 bg-black/50 border border-lime-400/30 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all resize-none" placeholder="Tell me about your project..." />
+                            </div>
+                          </div>
+                          {contactError && (
+                            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm">{contactError}</motion.div>
+                          )}
+                          <motion.button type="submit" disabled={isSubmittingContact || isContactSubmitted} whileHover={{ scale: isSubmittingContact ? 1 : 1.02 }} whileTap={{ scale: isSubmittingContact ? 1 : 0.98 }} className={`w-full py-3 px-6 rounded-lg font-bold flex items-center justify-center gap-2 transition-all ${ isContactSubmitted ? 'bg-green-500 hover:bg-green-600 text-white' : 'bg-lime-400 hover:bg-lime-300 text-black hover:shadow-[0_0_30px_rgba(163,230,53,0.5)]' } disabled:opacity-50 disabled:cursor-not-allowed`}>
+                            {isSubmittingContact ? (<><div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin" /><span>Sending...</span></>) : isContactSubmitted ? (<><CheckCircle className="w-5 h-5" /><span>Message Sent!</span></>) : (<><Send className="w-5 h-5" /><span>Send Message</span></>)}
+                          </motion.button>
+                        </form>
+                      </motion.div>
+                      <div className="space-y-6">
+                        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="glass-lime rounded-xl p-6 border-2 border-lime-400/30"><h3 className="text-xl font-black text-lime-400 mb-4">Contact Information</h3><div className="space-y-3 text-gray-300"><p className="flex items-center gap-2"><Mail className="w-5 h-5 text-lime-400" /><a href={`mailto:${contactData.email}`} className="hover:text-lime-400 transition-colors">{contactData.email}</a></p><p className="flex items-center gap-2"><svg className="w-5 h-5 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg><span>{contactData.phone}</span></p><p className="flex items-center gap-2"><MapPin className="w-5 h-5 text-lime-400" />{contactData.location}</p></div></motion.div>
+                        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="glass-lime rounded-xl p-6 border-2 border-lime-400/30"><h3 className="text-xl font-black text-lime-400 mb-4">Social Links</h3><div className="space-y-3">{contactData.socialLinks.map((link, idx) => (<motion.a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 * idx }} className="flex items-center gap-3 p-3 rounded-lg bg-lime-400/10 hover:bg-lime-400/20 border border-lime-400/30 hover:border-lime-400/50 transition-all group"><ExternalLink className="w-5 h-5 text-lime-400 group-hover:text-magenta-400 transition-colors" /><span className="text-gray-300 group-hover:text-lime-400 transition-colors font-bold">{link.name}</span></motion.a>))}</div></motion.div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>

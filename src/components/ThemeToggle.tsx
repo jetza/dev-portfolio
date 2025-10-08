@@ -6,10 +6,17 @@ export default function ThemeToggle() {
   const { theme, toggleTheme, isMobile } = useTheme();
   const isCyber = theme === 'cyber';
 
-  // Hide toggle on mobile (cyber theme is forced)
   if (isMobile) {
     return null;
   }
+
+  const handleToggleAndScroll = () => {
+    toggleTheme();
+    setTimeout(() => {
+      const portfolioContent = document.getElementById('portfolio-content');
+      portfolioContent?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
 
   return (
     <motion.button
@@ -28,7 +35,7 @@ export default function ThemeToggle() {
           ease: "easeInOut"
         }
       }}
-      onClick={toggleTheme}
+      onClick={handleToggleAndScroll}
       className="fixed top-8 right-8 z-50 group"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}

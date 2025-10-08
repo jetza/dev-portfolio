@@ -59,12 +59,12 @@ export default function ExperienceSection() {
                 <div className="flex flex-wrap gap-2">
                   {exp.techStack.split(',').map((tech, techIndex) => {
                     const gradients = [
-                      ['#a3e635', '#84cc16'], // lime to lime-500
-                      ['#ffffff', '#d1d5db'], // white to gray-300
-                      ['#84cc16', '#65a30d'], // lime-500 to lime-600
-                      ['#d1d5db', '#9ca3af'], // gray-300 to gray-400
-                      ['#a3e635', '#ffffff'], // lime to white
-                      ['#65a30d', '#a3e635'], // lime-600 to lime
+                      ['#a3e635', '#84cc16'],
+                      ['#ffffff', '#d1d5db'],
+                      ['#84cc16', '#65a30d'],
+                      ['#d1d5db', '#9ca3af'],
+                      ['#a3e635', '#ffffff'],
+                      ['#65a30d', '#a3e635'],
                     ];
                     const [color1, color2] = gradients[techIndex % gradients.length];
                     return (

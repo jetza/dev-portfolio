@@ -12,11 +12,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<ThemeMode>('minimal');
 
   useEffect(() => {
-    // Check if screen is mobile
     const checkMobile = () => {
-      const mobile = window.innerWidth < 1024; // lg breakpoint
+      const mobile = window.innerWidth < 1024;
       setIsMobile(mobile);
-      // Force cyber theme on mobile
       if (mobile) {
         setTheme('cyber');
       }
@@ -28,7 +26,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const toggleTheme = () => {
-    // Only allow theme toggle on desktop
     if (!isMobile) {
       setTheme(prev => prev === 'cyber' ? 'minimal' : 'cyber');
     }
