@@ -37,7 +37,7 @@ export const awards: Award[] = [
   }
 ];
 export const awardsContent = {
-  title: 'Awards & Recognition',
+  title: 'Awards',
   description: {
     title: 'Achievements',
     description: 'Recognition for contributions to technology, community engagement, and professional excellence in software development.'

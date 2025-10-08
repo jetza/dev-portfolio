@@ -28,18 +28,31 @@ export default function MainContent({ activeSection, isGameOpen }: MainContentPr
     contact: <ContactSection />,
   };
   return (
-    <div className="glass rounded-2xl p-8 border border-gray-700/50 min-h-[600px]">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeSection}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -20 }}
-          transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-        >
-          {sections[activeSection] || <AboutSection />}
-        </motion.div>
-      </AnimatePresence>
+    <div className="bg-black/80 backdrop-blur-sm rounded-2xl p-8 border-2 border-lime-400/30 hover:border-lime-400/50 transition-all duration-300 min-h-[600px] relative overflow-hidden">
+      {/* Cyber scan line effect */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-lime-400 to-transparent animate-scan" />
+      </div>
+      
+      {/* Corner decorations */}
+      <div className="absolute top-0 right-0 w-16 h-16 opacity-20">
+        <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-lime-400 to-transparent" />
+        <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-lime-400 to-transparent" />
+      </div>
+      
+      <div className="relative z-10">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeSection}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+          >
+            {sections[activeSection] || <AboutSection />}
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

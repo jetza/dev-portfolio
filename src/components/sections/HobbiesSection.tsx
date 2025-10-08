@@ -41,13 +41,39 @@ export default function HobbiesSection() {
               viewport={index >= 3 ? { once: true, margin: '0px 0px -200px 0px' } : undefined}
               transition={{ delay: index < 3 ? index * 0.2 : 0, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="glass p-5 rounded-lg hover:border-lime-400/50 transition-all duration-300 cursor-pointer group"
+              className="glass p-6 rounded-lg hover:border-lime-400/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
             >
-              <div className={`w-12 h-12 bg-gradient-to-br ${hobby.color} rounded-lg shadow-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                <Icon className="w-6 h-6 text-white" />
+              {/* Cyber corner accent */}
+              <div className="absolute top-0 right-0 w-12 h-12 opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none">
+                <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-lime-400 to-transparent" />
+                <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-lime-400 to-transparent" />
               </div>
-              <h3 className="text-lg font-semibold text-lime-400 mb-2">{hobby.name}</h3>
-              <p className="text-gray-400 text-sm">{hobby.description}</p>
+              
+              <div className="flex items-start justify-between mb-4">
+                <div className={`p-3 rounded-xl border transition-shadow relative z-10 ${
+                  index % 3 === 0 
+                    ? 'bg-lime-400/20 border-lime-400/30 shadow-[0_0_15px_rgba(163,230,53,0.2)] group-hover:shadow-[0_0_20px_rgba(163,230,53,0.4)]'
+                    : index % 3 === 1
+                    ? 'bg-cyan-400/20 border-cyan-400/30 shadow-[0_0_15px_rgba(34,211,238,0.2)] group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]'
+                    : 'bg-magenta-400/20 border-magenta-400/30 shadow-[0_0_15px_rgba(232,121,249,0.2)] group-hover:shadow-[0_0_20px_rgba(232,121,249,0.4)]'
+                }`}>
+                  <Icon className={`w-8 h-8 ${
+                    index % 3 === 0 
+                      ? 'text-lime-400' 
+                      : index % 3 === 1 
+                      ? 'text-cyan-400' 
+                      : 'text-magenta-400'
+                  }`} />
+                </div>
+              </div>
+              <h3 className={`text-lg font-semibold mb-2 group-hover:text-white transition-colors ${
+                index % 3 === 0 
+                  ? 'text-lime-400 drop-shadow-[0_0_8px_rgba(163,230,53,0.5)]' 
+                  : index % 3 === 1 
+                  ? 'text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]' 
+                  : 'text-magenta-400 drop-shadow-[0_0_8px_rgba(232,121,249,0.5)]'
+              }`}>{hobby.name}</h3>
+              <p className="text-gray-300 text-sm">{hobby.description}</p>
             </motion.div>
           );
         })}

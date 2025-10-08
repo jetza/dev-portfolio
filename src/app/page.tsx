@@ -21,7 +21,7 @@ export default function Home() {
       <Hero onNavigate={setActiveSection} />
 
       {}
-      <div id="portfolio-content" className="container mx-auto px-4 py-16">
+      <div id="portfolio-content" className={theme === 'minimal' ? '' : 'container mx-auto px-4 pt-8'}>
 
         {}
         {theme === 'minimal' ? (

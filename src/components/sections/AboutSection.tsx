@@ -21,7 +21,7 @@ export default function AboutSection() {
         <div className="space-y-4 text-gray-300">
           <p className="text-lg leading-relaxed">
             Hi! I&apos;m <span className="text-lime-400 font-semibold">{aboutData.name}</span>, 
-            a passionate <span className="text-lime-300 font-semibold">{aboutData.role}</span> based in {aboutData.location}.
+            a passionate <span className="text-magenta-400 font-semibold">{aboutData.role}</span> based in {aboutData.location}.
           </p>
           {aboutData.introduction.map((paragraph, index) => (
             <p key={index} className="leading-relaxed">

@@ -17,7 +17,7 @@ export const aboutData = {
     display: "github.com/jetzaperetza"
   },
   introduction: [
-    "FullStack Developer with 5+ years of experience in building scalable web and mobile applications using React, React Native, Next.js, TypeScript, and Redux. Experienced in UI/UX design implementation with Figma, InVision, and responsive styling using SCSS, TailwindCSS, and Bootstrap. Strong background in manual testing, debugging, and optimizing performance.",
+    "Full Stack Developer with 5+ years of experience in building scalable web and mobile applications using React, React Native, Next.js, TypeScript, and Redux. Experienced in UI/UX design implementation with Figma, InVision, and responsive styling using SCSS, TailwindCSS, and Bootstrap. Strong background in manual testing, debugging, and optimizing performance.",
     "Team player with a track record of collaborating in cross-functional teams, actively participating in code reviews, and contributing to process improvements. Passionate about mentoring, public speaking, and staying up-to-date with the latest technologies. Recognized Microsoft MVP for contributions to the developer community.",
     "Open to remote, hybrid, or onsite positions across Europe or globally, including opportunities requiring visa sponsorship."
   ],
@@ -37,7 +37,7 @@ export const aboutData = {
       title: "Education",
       description: "(M.E.) Master of Engineering in Information Technology"
     }
-  ],//todo
+  ],
   whatIDo: {
     title: "What I Do",
     items: [

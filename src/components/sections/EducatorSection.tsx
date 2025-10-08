@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { GraduationCap, MapPin, Calendar, ExternalLink } from 'lucide-react';
 import { educatorExperience, experienceContent } from '@/data/experience';
+import { TECH_STACK_GRADIENTS } from '@/constants/gradients';
 export default function EducatorSection() {
   return (
     <div className="space-y-6">
@@ -57,15 +58,7 @@ export default function EducatorSection() {
                 <p className="text-xs font-semibold text-lime-400 mb-3">Technologies:</p>
                 <div className="flex flex-wrap gap-2">
                   {exp.techStack.split(',').map((tech, techIndex) => {
-                    const gradients = [
-                      ['#a3e635', '#84cc16'],
-                      ['#ffffff', '#d1d5db'],
-                      ['#84cc16', '#65a30d'],
-                      ['#d1d5db', '#9ca3af'],
-                      ['#a3e635', '#ffffff'],
-                      ['#65a30d', '#a3e635'],
-                    ];
-                    const [color1, color2] = gradients[techIndex % gradients.length];
+                    const [color1, color2] = TECH_STACK_GRADIENTS[techIndex % TECH_STACK_GRADIENTS.length];
                     return (
                       <motion.span
                         key={techIndex}

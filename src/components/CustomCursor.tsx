@@ -5,7 +5,21 @@ export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isClicking, setIsClicking] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  
   useEffect(() => {
+    const checkIfMobile = () => {
+      const hasCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isSmallScreen = window.innerWidth <= 768;
+      return hasCoarsePointer || isTouchDevice || isSmallScreen;
+    };
+    
+    const mobile = checkIfMobile();
+    setIsMobile(mobile);
+    
+    if (mobile) return;
+    
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -31,17 +45,32 @@ export default function CustomCursor() {
         setIsHovering(false);
       }
     };
+    
+    const handleResize = () => {
+      const newMobile = checkIfMobile();
+      if (newMobile !== mobile) {
+        setIsMobile(newMobile);
+      }
+    };
+    
     window.addEventListener('mousemove', updateMousePosition);
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mouseup', handleMouseUp);
     window.addEventListener('mouseover', handleMouseOver);
+    window.addEventListener('resize', handleResize);
+    
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
       window.removeEventListener('mouseover', handleMouseOver);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
+  
+  if (isMobile) {
+    return null;
+  }
   return (
     <>
       <motion.div

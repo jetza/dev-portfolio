@@ -21,6 +21,15 @@
   * {
     cursor: none !important;
   }
+  @media (pointer: coarse) or (max-width: 768px) {
+    body {
+      cursor: auto;
+    }
+    
+    * {
+      cursor: auto !important;
+    }
+  }
 }
 .glass {
   background: rgba(255, 255, 255, 0.05);

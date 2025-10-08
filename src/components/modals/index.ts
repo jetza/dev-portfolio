@@ -1,0 +1,9 @@
+export { default as ProjectsModal } from './ProjectsModal';
+export { default as ExperienceModal } from './ExperienceModal';
+export { default as HobbiesModal } from './HobbiesModal';
+export { default as SnippetsModal } from './SnippetsModal';
+export { default as AboutModal } from './AboutModal';
+export { default as SkillsModal } from './SkillsModal';
+export { default as CertificatesModal } from './CertificatesModal';
+export { default as ContactModal } from './ContactModal';
+export { default as EducationModal } from './EducationModal';

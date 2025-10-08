@@ -178,28 +178,51 @@ export default function ContactSection() {
           transition={{ delay: 0.4 }}
           className="space-y-6"
         >
-          <div className="glass p-6 rounded-lg">
-            <h3 className="text-xl font-semibold text-lime-400 mb-4">Contact Information</h3>
-            <div className="space-y-4">
+          <div className="glass p-6 rounded-lg group relative overflow-hidden hover:border-lime-400/50 transition-all duration-300">
+            {/* Cyber corner accent */}
+            <div className="absolute top-0 right-0 w-12 h-12 opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none">
+              <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-lime-400 to-transparent" />
+              <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-lime-400 to-transparent" />
+            </div>
+            
+            <h3 className="text-xl font-semibold text-lime-400 mb-4 group-hover:text-white transition-colors drop-shadow-[0_0_8px_rgba(163,230,53,0.5)] relative z-10">Contact Information</h3>
+            <div className="space-y-4 relative z-10">
               <div className="flex items-center gap-3 text-gray-300">
-                <Mail className="w-5 h-5 text-lime-400" />
+                <div className="bg-lime-400/20 p-2 rounded-lg border border-lime-400/30">
+                  <Mail className="w-5 h-5 text-lime-400" />
+                </div>
                 <a href={`mailto:${contactData.email}`} className="hover:text-lime-400 transition-colors">{contactData.email}</a>
               </div>
               <div className="flex items-center gap-3 text-gray-300">
-                <MapPin className="w-5 h-5 text-lime-400" />
+                <div className="bg-cyan-400/20 p-2 rounded-lg border border-cyan-400/30">
+                  <MapPin className="w-5 h-5 text-cyan-400" />
+                </div>
                 <span>{contactData.location}</span>
               </div>
               <div className="flex items-center gap-3 text-gray-300">
-                <Phone className="w-5 h-5 text-lime-400" />
+                <div className="bg-magenta-400/20 p-2 rounded-lg border border-magenta-400/30">
+                  <Phone className="w-5 h-5 text-magenta-400" />
+                </div>
                 <span>{contactData.phone}</span>
               </div>
             </div>
           </div>
-          <div className="glass p-6 rounded-lg">
-            <h3 className="text-xl font-semibold text-lime-400 mb-4">Connect With Me</h3>
-            <div className="flex gap-4">
-              {contactData.socialLinks.map((link) => {
+          <div className="glass p-6 rounded-lg group relative overflow-hidden hover:border-lime-400/50 transition-all duration-300">
+            {/* Cyber corner accent */}
+            <div className="absolute top-0 right-0 w-12 h-12 opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none">
+              <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-cyan-400 to-transparent" />
+              <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-cyan-400 to-transparent" />
+            </div>
+            
+            <h3 className="text-xl font-semibold text-cyan-400 mb-4 group-hover:text-white transition-colors drop-shadow-[0_0_8px_rgba(34,211,238,0.5)] relative z-10">Connect With Me</h3>
+            <div className="flex gap-4 relative z-10">
+              {contactData.socialLinks.map((link, idx) => {
                 const Icon = iconMap[link.icon as keyof typeof iconMap];
+                const colors = [
+                  { bg: 'bg-lime-400/20', border: 'border-lime-400/30', text: 'text-lime-400', shadow: 'hover:shadow-[0_0_15px_rgba(163,230,53,0.4)]' },
+                  { bg: 'bg-cyan-400/20', border: 'border-cyan-400/30', text: 'text-cyan-400', shadow: 'hover:shadow-[0_0_15px_rgba(34,211,238,0.4)]' }
+                ];
+                const color = colors[idx % colors.length];
                 return (
                   <motion.a
                     key={link.name}
@@ -207,17 +230,23 @@ export default function ContactSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -5 }}
-                    className={`flex items-center justify-center w-12 h-12 bg-gradient-to-br ${link.gradient} rounded-lg text-white hover:shadow-lg hover:shadow-${link.shadowColor} transition-shadow`}
+                    className={`flex items-center justify-center w-14 h-14 ${color.bg} border ${color.border} rounded-xl ${color.text} ${color.shadow} transition-all duration-300`}
                   >
-                    <Icon className="w-6 h-6" />
+                    <Icon className="w-7 h-7" />
                   </motion.a>
                 );
               })}
             </div>
           </div>
-          <div className="glass-lime p-6 rounded-lg">
-            <h3 className="text-lg font-semibold text-lime-400 mb-2">{contactData.closingMessage.title}</h3>
-            <p className="text-gray-300 text-sm">
+          <div className="glass-lime p-6 rounded-lg group relative overflow-hidden">
+            {/* Cyber corner accent */}
+            <div className="absolute top-0 right-0 w-12 h-12 opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none">
+              <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-magenta-400 to-transparent" />
+              <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-magenta-400 to-transparent" />
+            </div>
+            
+            <h3 className="text-lg font-semibold text-magenta-400 mb-2 relative z-10 group-hover:text-white transition-colors">{contactData.closingMessage.title}</h3>
+            <p className="text-gray-300 text-sm relative z-10">
               {contactData.closingMessage.description}
             </p>
           </div>
